@@ -45,7 +45,11 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 1024, height: 764, title: "uMaster"});
 
   // and load the index.html of the app.
-  mainWindow.loadUrl('http://localhost:9000/');
+  var url = path.join(__dirname, "dist", "index.html");
+  url = url.replace("server\\", "");
+  url = "file://" + url;
+  console.log(url);
+  mainWindow.loadURL("http://localhost:9000");
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

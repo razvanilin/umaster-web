@@ -1,73 +1,22 @@
-<div class="jumbotron" style="margin-top:20px;">
-  <h1>uMaster</h1>
-  <p><img src="images/logo.png" height="70px"></p>
+<div ng-show="!loggedin" class="jumbotron" style="margin-top:20px;">
+  <p><img src="images/logo1.png" height="200px"></p>
+  <h2>uMaster</h2>
   <p class="lead">
     Be the master of your devices
   </p>
   <p>
-    <button ng-show="viewSignup" class="btn btn-lg btn-primary" ng-click="viewSignup = false;">Sign In</button>
-    <button ng-show="!viewSignup" class="btn btn-lg btn-success" ng-click="viewSignup = true;">Sign Up</button>
-
-    <a href="https://play.google.com/store/apps/details?id=com.nightingale">
-  <img alt="Get it on Google Play"
-       src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
-</a>
+    <button class="btn btn-lg btn-success" ng-click="signin()">Become uMaster</button>
   </p>
 </div>
 
-<div ng-show="viewSignup" class="row marketing" style="text-align:center">
-  <h4>Sign Up</h4>
-  <form role="form" class="form-horizontal">
-    <div class="form-group">
-      <label for="inputEmail" class="col-sm-offset-2 col-sm-2 control-label">Email</label>
-      <div class="col-sm-4">
-        <input type="email" ng-model="user.email" class="form-control" id="inputEmail" placeholder="Email">
-      </div>
-    </div>
-	  <div class="form-group">
-	    <label for="inputPassword" class="col-sm-offset-2 col-sm-2 control-label">Password</label>
-	    <div class="col-sm-4">
-	      <input type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Password">
-	    </div>
-	  </div>
-    <div class="form-group">
-      <label for="inputConfPassword" class="col-sm-offset-2 col-sm-2 control-label">Confirm Password</label>
-      <div class="col-sm-4">
-        <input type="password" ng-model="confPassword" class="form-control" id="inputConfPassword" placeholder="Confirm Password">
-      </div>
-    </div>
-	  <div class="form-group">
-	    <div>
-	      <button type="submit" ng-click="signup()" class="btn btn-lg btn-success"><span ng-show="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Sign Up</button>
-	    </div>
-	  </div>
-	  <div ng-if="message" class="alert alert-danger" role="alert">{{ message }}</div>
-	</form>
-</div>
-
-<!-- LOGIN -->
-<div ng-show="!viewSignup" class="row marketing" style="text-align:center">
-  <h4>Sign In</h4>
-  <form role="form" class="form-horizontal">
-    <div class="form-group">
-      <label for="inputEmail" class="col-sm-offset-2 col-sm-2 control-label">Email</label>
-      <div class="col-sm-4">
-        <input type="email" ng-model="user.email" class="form-control" id="inputEmail" placeholder="Email">
-      </div>
-    </div>
-	  <div class="form-group">
-	    <label for="inputPassword" class="col-sm-offset-2 col-sm-2 control-label">Password</label>
-	    <div class="col-sm-4">
-	      <input type="password" ng-model="user.password" class="form-control" id="inputPassword3" placeholder="Password">
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <div>
-	      <button type="submit" ng-click="login()" class="btn btn-lg btn-primary"><span ng-show="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Sign In</button>
-	    </div>
-	  </div>
-	  <div ng-if="message" class="alert alert-danger" role="alert">{{ message }}</div>
-	</form>
+<div ng-show="loggedin" class="jumbotron" style="margin-top:20px;">
+  <h2>Hello, {{profile.nickname}}</h2>
+  <p><img ng-src="{{profile.picture}}" class="img-circle" height="200px"></p>
+  <h2>uMaster</h2>
+  <p class="lead">
+    Be the master of your devices
+  </p>
+  <p><button class="btn btn-danger" ng-click="logout()">Log Out</button></p>
 </div>
 
 <footer class="footer" style="width:100%">

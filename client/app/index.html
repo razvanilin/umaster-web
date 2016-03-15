@@ -5,6 +5,28 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=start" parsetags="explicit" async defer></script>
+  <script>
+    function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '1034186237800-7her04djh7slgu8mdq2n4du5f464rtdg.apps.googleusercontent.com',
+          // Scopes to request in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
+
+        gapi.signin2.render('signinButton', {
+                'class': 'g-signin',
+                redirect_uri: 'postmessage',
+                onsuccess: signInCallback,
+                cookiepolicy: 'single_host_origin',
+                accesstype: 'offline',
+                theme: 'dark'
+            });
+      });
+    }
+  </script-->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -74,8 +96,25 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
+    <script src="bower_components/auth0.js/build/auth0.js"></script>
+    <script src="bower_components/auth0-lock/build/auth0-lock.js"></script>
+    <script src="bower_components/auth0-angular/build/auth0-angular.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <!--script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+    <script>
+    function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '1034186237800-7her04djh7slgu8mdq2n4du5f464rtdg.apps.googleusercontent.com',
+          // Scopes to request in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
+      });
+    }
+  </script-->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
