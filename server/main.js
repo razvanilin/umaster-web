@@ -8,7 +8,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var _ = require('lodash');
 var expressApp = express();
+var http = require('http').Server(expressApp);
 var cors = require('cors');
+var spawn = require('child_process').spawn;
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -65,5 +67,7 @@ app.on('ready', function() {
   });
 
 
-  expressApp.listen(8000);
+  http.listen(8000, function(){
+    console.log("Listening on port" + 8000);
+  });
 });

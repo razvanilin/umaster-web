@@ -51,6 +51,14 @@ angular
   .factory('User', function(Restangular) {
     return Restangular.service('user');
   })
+  .factory('Script', function(Restangular) {
+    return Restangular.service('script');
+  })
+  .factory('umasterSocket', function(socketFactory) {
+    return socketFactory({
+      ioSocket: io.connect('http://localhost:3030')
+    });
+  })
   .run(function($rootScope, auth, store, jwtHelper, $location) {
     // This events gets triggered on refresh or URL change
     $rootScope.$on('$locationChangeStart', function() {
