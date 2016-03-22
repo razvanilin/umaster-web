@@ -30,6 +30,7 @@ angular.module('uMasterApp')
     });
 
     $scope.lockScript = function() {
+      $scope.profile.pinCode = $scope.pinCode;
       umasterSocket.emit('lock', $scope.profile);
     };
 
