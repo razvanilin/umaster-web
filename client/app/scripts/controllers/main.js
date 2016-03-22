@@ -16,17 +16,16 @@ angular.module('uMasterApp')
       $scope.profile = store.get('profile');
       $scope.loggedin = true;
 
-      umasterSocket.forward('connection', $scope);
-      $scope.$on('socket:connection', function(ev, data) {
-        $scope.theData = data;
-        console.log('connection');
-        console.log($scope.theData);
-      });
+      umasterSocket.emit('register', $scope.profile);
     }
     umasterSocket.on('lock-accepted', function(data) {
-      Script.one('lock').get().then(function(data) {
-        console.log(data);
-      });
+      if (data.pinCode == $scope.pinCode) {
+        Script.one('lock').get().then(function(data) {
+          console.log(data);
+        });
+      } else {
+        console.log("Lock denied.");
+      }
     });
 
     $scope.lockScript = function() {
@@ -52,6 +51,9 @@ angular.module('uMasterApp')
       store.remove('token');
       $scope.loggedin = false;
       $scope.profile = {};
+
+      umasterSocket.emit('unregister', $scope.profile);
+      $scope.pinCode = "";
     };
 
   });
