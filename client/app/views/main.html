@@ -1,6 +1,7 @@
-<div ng-show="!loggedin" class="jumbotron" style="margin-top:20px;">
+<ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
+<div ng-show="!loggedin && !loading" class="jumbotron" style="margin-top:20px;">
   <p><img src="images/logo33.png" height="200px"></p>
-  <h2>uMaster - Locker</h2>
+  <h2>uMaster</h2>
   <p class="lead">
     Be the master of your devices
   </p>
@@ -9,20 +10,33 @@
   </p>
 </div>
 
-<div ng-show="loggedin" class="jumbotron" style="margin-top:20px;">
-  <h2>Hello, {{profile.nickname}}</h2>
-  <p><img ng-src="{{profile.picture}}" class="img-circle" height="200px"></p>
-  <h2>uMaster - Locker</h2>
-  <p class="lead">
-    Be the master of your devices
-  </p>
-  <p>
-    <button class="btn btn-danger" ng-click="logout()">Log Out</button>
-    <button class="btn btn-info" ng-click="lockScript()">Lock PC</button>
-  </p>
+<div ng-show="!loggedin && loading" class="row" style="text-align:center">
+  <h1><i class="fa fa-circle-o-notch fa-spin"></i></h1>
+</div>
+
+<div ng-show="loggedin">
+
+  <!-- All scripts section -->
   <div class="row">
-    <div class="col-md-offset-3 col-md-6">
-      <input type="text" ng-model="pinCode" class="form-control" placeholder=" Pin Code">
+    <div ng-repeat="scr in scripts">
+      <div class="clearfix" ng-if="$index % 3 == 0"></div>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading" style="text-align:center">
+            <h4>{{scr.name}}</h4>
+          </div>
+          <div class="panel-body">
+            {{scr.description}}
+          </div>
+          <div class="panel-footer" style="padding:0px;margin:0px">
+            <div class="row" style="padding:0px;margin:0px;">
+              <div class="btn-group" style="width:100%">
+                <button class="btn btn-default" style="width:100%;" ng-click="runScript(scr)"><i class="fa fa-play text-success"></i> Run Script</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

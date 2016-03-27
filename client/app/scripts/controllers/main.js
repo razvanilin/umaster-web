@@ -13,37 +13,56 @@ angular.module('uMasterApp')
     $scope.user = {};
 
     if (store.get('profile')) {
-      $scope.profile = store.get('profile');
-      $scope.loggedin = true;
+      $scope.loading = true;
+      // create or update the user
+      User.one().customPOST({user: store.get('profile')}).then(function(user) {
 
-      umasterSocket.forward('connection', $scope);
-      $scope.$on('socket:connection', function(ev, data) {
-        $scope.theData = data;
-        console.log('connection');
-        console.log($scope.theData);
+        console.log(user);
+        $scope.profile = store.get('profile');
+        $scope.loggedin = true;
+        $scope.loading = false;
+
+      }, function(response) {
+        console.log(response);
+        $scope.loading = false;
+      });
+
+      Script.one().get({user: store.get('profile').email}).then(function(scripts) {
+        $scope.scripts = scripts;
+      }, function(response) {
+        console.log(response);
       });
     }
-    umasterSocket.on('lock-accepted', function(data) {
-      Script.one('lock').get().then(function(data) {
-        console.log(data);
-      });
-    });
 
-    $scope.lockScript = function() {
-      $scope.profile.pinCode = $scope.pinCode;
-      umasterSocket.emit('lock', $scope.profile);
+    $scope.runScript = function(script) {
+      script.pinCode = $scope.pinCode;
+      script.email = $scope.profile.email;
+      umasterSocket.emit('script', script);
     };
 
     $scope.signin = function() {
+      $scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
-        store.set('profile', profile);
-        store.set('token', token);
-        $scope.profile = profile;
-        $scope.loggedin = true;
-        $location.path('/');
+        console.log(profile);
+
+        // create or update the user
+        User.one().customPOST({user: profile}).then(function(user) {
+
+          console.log(user);
+          store.set('profile', profile);
+          store.set('token', token);
+          $scope.profile = profile;
+          $scope.loggedin = true;
+          $scope.loading = false;
+
+        }, function(response) {
+          console.log(response);
+          $scope.loading = false;
+        });
       }, function () {
         // Error callback
+        $scope.loading = false;
       });
     };
 
