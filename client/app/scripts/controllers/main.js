@@ -35,21 +35,18 @@ angular.module('uMasterApp')
       }, function(response) {
         console.log(response);
       });
-      
+
     }
-    umasterSocket.on('lock-accepted', function(data) {
-      if (data.pinCode == $scope.pinCode) {
-        Script.one('lock').get().then(function(data) {
+
+    umasterSocket.on('script-accepted', function(script) {
+      if (script.pinCode == $scope.pinCode) {
+        Script.one(script.name).customPOST({script: script}).then(function(data) {
           console.log(data);
         });
       } else {
-        console.log("Lock denied.");
+        console.log("Script denied.");
       }
     });
-
-    $scope.lockScript = function() {
-      umasterSocket.emit('lock', $scope.profile);
-    };
 
     $scope.signin = function() {
       $scope.loading = true;
@@ -116,7 +113,14 @@ angular.module('uMasterApp')
 
     $scope.deleteScript = function(scriptName) {
       $scope.loading = true;
-
+      Script.one(scriptName).one('remove').customPOST({user:$scope.profile.email}).then(function(scripts) {
+        console.log(scripts);
+        $scope.scripts = scripts;
+        $scope.loading = false;
+      }, function(response) {
+        $scope.loading = false;
+        console.log(response.data);
+      });
     };
 
   });
