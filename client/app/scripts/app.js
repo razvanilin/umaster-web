@@ -10,13 +10,13 @@
  */
 angular
   .module('uMasterApp', [
-    'ngResource',
-    'ngRoute',
     'restangular',
     'btford.socket-io',
     'auth0',
     'angular-storage',
-    'angular-jwt'
+    'angular-jwt',
+    'ngRoute',
+    'ngResource'
   ])
   .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider) {
     RestangularProvider.setBaseUrl("http://localhost:8000");

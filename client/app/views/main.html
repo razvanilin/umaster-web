@@ -1,4 +1,5 @@
-<div ng-show="!loggedin" class="jumbotron" style="margin-top:20px;">
+<ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
+<div ng-show="!loggedin && !loading" class="jumbotron" style="margin-top:20px;">
   <p><img src="images/logo33.png" height="200px"></p>
   <h2>uMaster</h2>
   <p class="lead">
@@ -9,19 +10,92 @@
   </p>
 </div>
 
-<div ng-show="loggedin" class="jumbotron" style="margin-top:20px;">
-  <h2>Hello, {{profile.nickname}}</h2>
-  <p><img ng-src="{{profile.picture}}" class="img-circle" height="200px"></p>
-  <h2>uMaster</h2>
-  <p class="lead">
-    Be the master of your devices
-  </p>
-  <p>
-    <button class="btn btn-danger" ng-click="logout()">Log Out</button>
-  </p>
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6">
-      <input type="text" ng-model="pinCode" class="form-control" placeholder=" Pin Code">
+<div ng-show="!loggedin && loading" class="row" style="text-align:center">
+  <h1><i class="fa fa-circle-o-notch fa-spin"></i></h1>
+</div>
+
+<div ng-show="loggedin">
+  <div class="row" style="text-align:center">
+    <div class="col-md-12">
+      <div ng-class="!viewNewScript ? 'panel panel-success' : 'panel panel-default'">
+        <div ng-show="!viewNewScript && scripts" class="panel-heading" style="cursor:pointer" ng-click="prepareScript()"><h3><span class="glyphicon glyphicon-plus-sign"></span> Add Script</h3></div>
+        <div ng-show="!viewNewScript && !scripts" class="panel-heading" style="cursor:pointer" ng-click="prepareScript()"><h3><span class="glyphicon glyphicon-plus-sign"></span> No scripts yet. Click here to add one!</h3></div>
+        <div ng-show="viewNewScript" class="panel-body" style="cursor:pointer;">
+          <div class="row">
+            <div class="col-md-6"><button class="btn btn-lg btn-success" ng-click="addScript()" style="width:90%"><span class="glyphicon glyphicon-ok"></span> Save <i ng-show="loading" class="fa fa-circle-o-notch fa-spin"></i></button></div>
+            <div class="col-md-6"><button class="btn btn-lg btn-warning" ng-click="prepareScript()" style="width:90%"><span class="glyphicon glyphicon-remove"></span> Cancel</button></div>
+          </div>
+          <div ng-show="scriptError" class="row">
+            <div class="col-md-12 top-buffer-sm"><div class="alert alert-danger">{{scriptError}}</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All scripts section -->
+  <div ng-show="!viewNewScript" class="row">
+    <div ng-repeat="scr in scripts">
+      <div class="clearfix" ng-if="$index % 3 == 0"></div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="text-align:center">
+            <h4>{{scr.name}}</h4>
+          </div>
+          <div class="panel-body">
+            {{scr.description}}
+          </div>
+          <div class="panel-footer" style="padding:0px;margin:0px">
+            <div class="row" style="padding:0px;margin:0px;">
+              <div class="btn-group" style="width:100%">
+                <button class="btn btn-default text-primary" style="width:50%;"><i class="text-primary fa fa-cog" ></i> Settings</button>
+
+                 <button class="btn btn-default" style="width:50%;"><i class="fa fa-trash text-danger"></i> Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add new script section -->
+  <div ng-show="viewNewScript" class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form role="form" class="form-horizontal">
+      			<div class="form-group">
+      				<label for="inputName" class="col-md-4 control-label"><strong>Script Name*</strong></label>
+      				<div class="col-md-5">
+      					<input type="text" ng-model="script.name" class="form-control" id="inputName" placeholder="Script Name" required autofocus>
+      				</div>
+      			</div>
+
+      			<div class="form-group top-buffer-sm">
+      				<label for="inputFile" class="col-md-4 control-label"><strong>Script File*</strong></label>
+      				<div class="col-md-5">
+      					<input type="text" ng-model="script.script_file" class="form-control" id="inputFile" placeholder="File name and extension (e.g. lock.bat)" required>
+      				</div>
+      			</div>
+
+      			<div class="form-group top-buffer-sm">
+      				<label for="inputArgs" class="col-md-4 control-label">Arguments</label>
+      				<div class="col-md-5">
+      					<input type="text" ng-model="script.args" class="form-control" id="inputArgs" placeholder="Arguments separated with a coma">
+      				</div>
+      			</div>
+
+      			<div class="form-group top-buffer-sm">
+      				<label for="inputDescription" class="col-md-4 control-label">Script Description</label>
+      				<div class="col-md-5">
+      					<textarea ng-model="script.description" class="form-control" id="inputDescription" placeholder="Description (optional)"/>
+      				</div>
+      			</div>
+
+      		</form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

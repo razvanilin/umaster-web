@@ -35,6 +35,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
   </head>
   <body ng-app="uMasterApp">
@@ -70,7 +71,7 @@
       </div>
     </div-->
 
-    <div class="container">
+    <div class="container-fluid">
     <div ng-view=""></div>
     </div>
 
@@ -86,9 +87,10 @@
        ga('send', 'pageview');
     </script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!--script>window.$ = window.jQuery = require('..\\client\\bower_components\\jquery\\dist\\jquery.js');</script-->
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -96,11 +98,11 @@
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-socket-io/socket.js"></script>
-    <script src="bower_components/auth0.js/build/auth0.js"></script>
     <script src="bower_components/auth0-lock/build/auth0-lock.js"></script>
+    <script src="bower_components/auth0.js/build/auth0.js"></script>
     <script src="bower_components/auth0-angular/build/auth0-angular.js"></script>
-    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <script src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!--script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>

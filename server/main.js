@@ -28,8 +28,8 @@ expressApp.use(methodOverride('X-HTTP-Method-Override'));
 expressApp.use(session({secret: 'umasterc'}));
 expressApp.use(cors());
 
-expressApp.use(express.static(path.join(__dirname, 'app')));
-expressApp.set('/', path.join(__dirname, 'app'));
+expressApp.use(express.static(path.join(__dirname, 'dist')));
+expressApp.set('/', path.join(__dirname, 'dist'));
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
@@ -44,14 +44,14 @@ app.on('window-all-closed', function() {
 // initialization and is ready to create browser windows.
 app.on('ready', function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1024, height: 764, title: "uMaster"});
+  mainWindow = new BrowserWindow({width: 1024, height: 764, title: "uMaster", "nodeIntegration":false});
 
   // and load the index.html of the app.
   var url = path.join(__dirname, "dist", "index.html");
-  url = url.replace("server\\", "");
+  //url = url.replace("server\\", "");
   url = "file://" + url;
   console.log(url);
-  mainWindow.loadURL("http://localhost:9002");
+  mainWindow.loadURL("http://localhost:9000");
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
