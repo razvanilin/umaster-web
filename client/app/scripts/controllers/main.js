@@ -66,6 +66,12 @@ angular.module('uMasterApp')
           umasterSocket.emit('register', $scope.profile);
           $scope.loading = false;
 
+          Script.one().get({user: profile.email}).then(function(scripts) {
+            $scope.scripts = scripts;
+          }, function(response) {
+            console.log(response);
+          });
+
         }, function(response) {
           console.log(response);
           $scope.loading = false;
