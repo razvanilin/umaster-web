@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "main.js",
   "scripts": {
-    "build-win": "electron-packager . uMaster --platform=win32 --arch=ia32 --version=0.37.2"
+    "build-win": "electron-packager . uMaster --platform=win32 --arch=ia32 --version=0.37.2 --asar=true"
   },
   "dependencies": {
     "body-parser": "^1.14.1",

@@ -51,7 +51,7 @@ app.on('ready', function() {
   //url = url.replace("server\\", "");
   url = "file://" + url;
   console.log(url);
-  mainWindow.loadURL("http://localhost:9000");
+  mainWindow.loadURL("http://localhost:8000");
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
