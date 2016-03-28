@@ -1,0 +1,28 @@
+[{
+  "id":"openApp",
+  "name":"Open Application",
+  "script_file":"openApp.bat",
+  "args": {
+      "type":"file",
+      "label":"Select an application you the script to run",
+      "placeholder":"",
+      "active": true
+  }
+}, {
+  "id":"openUrl",
+  "name":"Open URL",
+  "script_file":"openApp.bat",
+  "args": {
+    "type":"text",
+    "label":"Enter URL",
+    "placeholder":"http://google.com",
+    "active": true
+  }
+}, {
+  "id":"lock",
+  "name":"Lock PC",
+  "script_file":"lock.bat",
+  "args": {
+    "active": false
+  }
+}]

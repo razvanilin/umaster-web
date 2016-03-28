@@ -1,5 +1,6 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
+var fs = require('fs');
 var request = require('request');
 
 module.exports = function(expressApp, route) {
@@ -34,6 +35,24 @@ module.exports = function(expressApp, route) {
   // ------------------------------------------------------------------------
 
   /*
+   *  Route to get the scripts found in the scriptsConf.json
+   */
+  expressApp.get('/script/local', function(req, res) {
+    var scriptsConfPath = path.join(__dirname, 'scripts', 'scriptsConf.json');
+    scriptsConfPath = scriptsConfPath.replace("controllers\\", "");
+
+    var scriptsConf;
+
+    try {
+      scriptsConf = JSON.parse(fs.readFileSync(scriptsConfPath));
+      return res.status(200).send(scriptsConf);
+    } catch (e) {
+      return res.status(400).send("Could not read the scripts configuration file.");
+    }
+  });
+  // ------------------------------------------------------------------------
+
+  /*
    *  Route to request the creation of a new script
    */
   expressApp.post('/script', function(req, res) {
@@ -53,6 +72,40 @@ module.exports = function(expressApp, route) {
                       args: req.body.script.args
                     }
       },
+      header: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }
+    };
+
+    request(options, function(error, resp, body) {
+      if (error) return res.status(400).send("Error with the request.");
+
+      var responseString;
+
+      try {
+        responseString = JSON.parse(body);
+        return res.status(200).send(responseString);
+      } catch (e) {
+        return res.status(400).send(body);
+      }
+    });
+  });
+  // ------------------------------------------------------------------------
+
+  /*
+   *  Route to request changes to a script
+   */
+  expressApp.put('/script', function(req, res) {
+    if (!req.body.user) return res.status(400).send("No user in the body.");
+    if (!req.body.script) return res.status(400).send("No script in the body.");
+    if (!req.body.script.name) return res.status(400).send("Script needs a name.");
+    if (!req.body.script.script_file) return res.status(400).send("Script needs a file name");
+
+    var options = {
+      url: expressApp.settings.host + "/script",
+      method: "PUT",
+      form: { user: req.body.user,script: req.body.script },
       header: {
         "Accept": "application/json",
         "Content-Type": "application/json"

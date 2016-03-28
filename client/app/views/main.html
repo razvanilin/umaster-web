@@ -22,7 +22,7 @@
         <div ng-show="!viewNewScript && scripts.length < 1" class="panel-heading" style="cursor:pointer" ng-click="prepareScript()"><h3><span class="glyphicon glyphicon-plus-sign"></span> No scripts yet. Click here to add one!</h3></div>
         <div ng-show="viewNewScript" class="panel-body" style="cursor:pointer;">
           <div class="row">
-            <div class="col-md-6"><button class="btn btn-lg btn-success" ng-click="addScript()" style="width:90%"><span class="glyphicon glyphicon-ok"></span> Save <i ng-show="loading" class="fa fa-circle-o-notch fa-spin"></i></button></div>
+            <div class="col-md-6"><button type="submit" class="btn btn-lg btn-success" ng-click="addScript()" style="width:90%"><span class="glyphicon glyphicon-ok"></span> Save <i ng-show="loading" class="fa fa-circle-o-notch fa-spin"></i></button></div>
             <div class="col-md-6"><button class="btn btn-lg btn-warning" ng-click="prepareScript()" style="width:90%"><span class="glyphicon glyphicon-remove"></span> Cancel</button></div>
           </div>
           <div ng-show="scriptError" class="row">
@@ -48,7 +48,7 @@
           <div class="panel-footer" style="padding:0px;margin:0px">
             <div class="row" style="padding:0px;margin:0px;">
               <div class="btn-group" style="width:100%">
-                <button class="btn btn-default" style="width:50%;"><i class="fa fa-pencil-square-o text-primary"></i> Edit</button>
+                <button class="btn btn-default" style="width:50%;" ng-click="editScript(scr)"><i class="fa fa-pencil-square-o text-primary"></i> Edit</button>
 
                  <button class="btn btn-default" style="width:50%;" ng-click="deleteScript(scr.name)"><i class="fa fa-trash text-danger"></i> Remove</button>
               </div>
@@ -65,24 +65,35 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <form role="form" class="form-horizontal">
-      			<div class="form-group">
-      				<label for="inputName" class="col-md-4 control-label"><strong>Script Name*</strong></label>
+
+            <div class="form-group">
+      				<label for="inputType" class="col-md-4 control-label"><strong>Select Activity</strong></label>
       				<div class="col-md-5">
-      					<input type="text" ng-model="script.name" class="form-control" id="inputName" placeholder="Script Name" required autofocus>
+      					<select ng-model="selectedActivity" ng-change="selectScriptFile()" class="form-control">
+                  <option ng-repeat="activity in localScripts" value="{{$index}}" ng-select="selectActivity(activity)">{{activity.name}}</option>
+                </select>
       				</div>
       			</div>
 
-      			<div class="form-group top-buffer-sm">
+      			<div class="form-group">
+      				<label for="inputName" class="col-md-4 control-label"><strong>Activity Name*</strong></label>
+      				<div class="col-md-5">
+      					<input type="text" ng-model="script.name" class="form-control" id="inputName" placeholder="Input a name" required autofocus>
+      				</div>
+      			</div>
+
+      			<!--div class="form-group top-buffer-sm">
       				<label for="inputFile" class="col-md-4 control-label"><strong>Script File*</strong></label>
       				<div class="col-md-5">
       					<input type="text" ng-model="script.script_file" class="form-control" id="inputFile" placeholder="File name and extension (e.g. lock.bat)" required>
       				</div>
-      			</div>
+      			</div-->
 
-      			<div class="form-group top-buffer-sm">
-      				<label for="inputArgs" class="col-md-4 control-label">Arguments</label>
+      			<div ng-show="localScripts[selectedActivity].args.active" class="form-group top-buffer-sm">
+      				<label for="inputArgs" class="col-md-4 control-label">{{localScripts[selectedActivity].args.label}}</label>
       				<div class="col-md-5">
-      					<input type="text" ng-model="script.args" class="form-control" id="inputArgs" placeholder="Arguments separated with a coma">
+      					<input ng-show="localScripts[selectedActivity].args.type == 'text'" type="text" ng-model="script.args" class="form-control" id="inputArgs" placeholder="{{localScripts[selectedActivity].args.placeholder}}">
+                <input ng-show="localScripts[selectedActivity].args.type == 'file'" type="file" ng-model="script.args" class="form-control" id="inputArgs" onchange="angular.element(this).scope().file_changed(this)">
       				</div>
       			</div>
 

@@ -12,6 +12,7 @@ angular.module('uMasterApp')
     $scope.viewSignup = true;
     $scope.user = {};
     $scope.viewNewScript = false;
+    $scope.script = {};
 
     if (store.get('profile')) {
       $scope.loading = true;
@@ -92,23 +93,62 @@ angular.module('uMasterApp')
       if (!$scope.viewNewScript) {
         $scope.script = {};
         $scope.scriptError = false;
+      } else {
+        $scope.loading = true;
+        Script.one('local').get().then(function(localScripts) {
+          $scope.localScripts = localScripts;
+          $scope.loading = false;
+        }, function(response) {
+          console.log(response);
+          $scope.loading = false;
+        });
       }
     };
 
     $scope.addScript = function() {
       $scope.loading = true;
-      Script.one().customPOST({user: $scope.profile.email, script: $scope.script})
-      .then(function(scripts) {
-        $scope.scripts = scripts;
-        console.log(scripts);
-        $scope.viewNewScript = false;
-        $scope.loading = false;
-        $location.path("/");
-      }, function(response) {
-        console.log(response);
-        $scope.scriptError = response.data;
-        $scope.loading = false;
-      });
+
+      console.log($scope.script.args);
+      if ($scope.script.args && $scope.script.args.length > 0)
+        $scope.script.args = $scope.script.args.split(",");
+
+      // check to see if this an edit request or creation
+      var edit = false;
+      for (var i=0; i<$scope.scripts.length; i++) {
+        if ($scope.script._id == $scope.scripts[i]._id) {
+          edit = true;
+          break;
+        }
+      }
+
+      if (edit) {
+        Script.one().customPUT({user: $scope.profile.email, script: $scope.script})
+        .then(function(scripts) {
+          $scope.scripts = scripts;
+          console.log(scripts);
+          $scope.viewNewScript = false;
+          $scope.loading = false;
+          $location.path("/");
+        }, function(response) {
+          console.log(response);
+          $scope.scriptError = response.data;
+          $scope.loading = false;
+        });
+
+      } else {
+        Script.one().customPOST({user: $scope.profile.email, script: $scope.script})
+        .then(function(scripts) {
+          $scope.scripts = scripts;
+          console.log(scripts);
+          $scope.viewNewScript = false;
+          $scope.loading = false;
+          $location.path("/");
+        }, function(response) {
+          console.log(response);
+          $scope.scriptError = response.data;
+          $scope.loading = false;
+        });
+      }
     };
 
     $scope.deleteScript = function(scriptName) {
@@ -121,6 +161,30 @@ angular.module('uMasterApp')
         $scope.loading = false;
         console.log(response.data);
       });
+    };
+
+    $scope.editScript = function(script) {
+      $scope.script = script;
+      $scope.prepareScript();
+    };
+
+    $scope.file_changed = function(element) {
+
+      $scope.$apply(function(scope) {
+         var file = element.files[0];
+
+         $scope.script.args = file.path;
+
+         var reader = new FileReader();
+         reader.onload = function(e) {
+            //
+         };
+         reader.readAsDataURL(file);
+      });
+    };
+
+    $scope.selectScriptFile = function() {
+      $scope.script.script_file = $scope.localScripts[$scope.selectedActivity].script_file;
     };
 
   });
