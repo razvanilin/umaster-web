@@ -56,7 +56,7 @@ angular
   })
   .factory('umasterSocket', function(socketFactory) {
     return socketFactory({
-      ioSocket: io.connect('http://umaster.razvanilin.com')
+      ioSocket: io.connect('http://localhost:3030')
     });
   })
   .run(function($rootScope, auth, store, jwtHelper, $location) {

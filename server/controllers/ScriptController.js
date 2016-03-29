@@ -28,7 +28,7 @@ module.exports = function(expressApp, route) {
         responseString = JSON.parse(body);
         return res.status(200).send(responseString);
       } catch (e) {
-        return res.status(400).send(e);
+        return res.status(200).send([]);
       }
     });
   });
@@ -59,7 +59,6 @@ module.exports = function(expressApp, route) {
     if (!req.body.user) return res.status(400).send("No user in the body.");
     if (!req.body.script) return res.status(400).send("No script in the body.");
     if (!req.body.script.name) return res.status(400).send("Script needs a name.");
-    if (!req.body.script.script_file) return res.status(400).send("Script needs a file name");
 
     var options = {
       url: expressApp.settings.host + "/script",
@@ -158,8 +157,8 @@ module.exports = function(expressApp, route) {
   // ------------------------------------------------------------------------
 
 
-  expressApp.post('/script/:name', function(req, res) {
-    var script = path.join(__dirname, '..', '..', 'scripts', req.body.script.script_file);
+  expressApp.post('/script/run/:name', function(req, res) {
+    var script = path.join(__dirname, '..', '..', 'scripts', req.body.script.script_file + "");
     script = path.normalize(script);
     var lock;
 

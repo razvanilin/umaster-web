@@ -12,6 +12,10 @@ var http = require('http').Server(expressApp);
 var cors = require('cors');
 var spawn = require('child_process').spawn;
 
+process.on('uncaughtException', function (error) {
+  console.log(error.stack);
+});
+
 // Report crashes to our server.
 require('crash-reporter').start();
 
@@ -51,7 +55,7 @@ app.on('ready', function() {
   //url = url.replace("server\\", "");
   url = "file://" + url;
   console.log(url);
-  mainWindow.loadURL("http://localhost:8000");
+  mainWindow.loadURL("http://localhost:9000");
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

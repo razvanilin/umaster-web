@@ -13,6 +13,7 @@ angular.module('uMasterApp')
     $scope.user = {};
     $scope.viewNewScript = false;
     $scope.script = {};
+    $scope.input = {selectedActivity: 0};
 
     if (store.get('profile')) {
       $scope.loading = true;
@@ -26,22 +27,22 @@ angular.module('uMasterApp')
         umasterSocket.emit('register', $scope.profile);
         $scope.loading = false;
 
+        Script.one().get({user: store.get('profile').email}).then(function(scripts) {
+          console.log(scripts);
+          $scope.scripts = scripts;
+        }, function(response) {
+          console.log(response);
+        });
+
       }, function(response) {
         console.log(response);
         $scope.loading = false;
       });
-
-      Script.one().get({user: store.get('profile').email}).then(function(scripts) {
-        $scope.scripts = scripts;
-      }, function(response) {
-        console.log(response);
-      });
-
     }
 
     umasterSocket.on('script-accepted', function(script) {
       if (script.pinCode == $scope.pinCode) {
-        Script.one(script.name).customPOST({script: script}).then(function(data) {
+        Script.one('run').one(script.name).customPOST({script: script}).then(function(data) {
           console.log(data);
         });
       } else {
@@ -190,7 +191,15 @@ angular.module('uMasterApp')
     };
 
     $scope.selectScriptFile = function() {
+      console.log($scope.input.selectedActivity);
+
+      if (!$scope.script) $scope.script = {};
+      // add the script file
+      $scope.script.script_file = $scope.localScripts[$scope.input.selectedActivity].script_file;
+      console.log($scope.script.script_file);
+      /*if (typeof $scope.script === typeof undefined) { $scope.script = {}; console.log($scope.script); }
       $scope.script.script_file = $scope.localScripts[$scope.selectedActivity].script_file;
+      console.log($scope.script.script_file);*/
     };
 
   });

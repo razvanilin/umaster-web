@@ -19,7 +19,7 @@
     <div class="col-md-12">
       <div ng-class="!viewNewScript ? 'panel panel-success' : 'panel panel-default'">
         <div ng-show="!viewNewScript && scripts.length > 0" class="panel-heading" style="cursor:pointer" ng-click="prepareScript()"><h3><span class="glyphicon glyphicon-plus-sign"></span> Add Script</h3></div>
-        <div ng-show="!viewNewScript && scripts.length < 1" class="panel-heading" style="cursor:pointer" ng-click="prepareScript()"><h3><span class="glyphicon glyphicon-plus-sign"></span> No scripts yet. Click here to add one!</h3></div>
+        <div ng-show="!viewNewScript && (!scripts || scripts.length < 1)" class="panel-heading" style="cursor:pointer" ng-click="prepareScript()"><h3><span class="glyphicon glyphicon-plus-sign"></span> No scripts yet. Click here to add one!</h3></div>
         <div ng-show="viewNewScript" class="panel-body" style="cursor:pointer;">
           <div class="row">
             <div class="col-md-6"><button type="submit" class="btn btn-lg btn-success" ng-click="addScript()" style="width:90%"><span class="glyphicon glyphicon-ok"></span> Save <i ng-show="loading" class="fa fa-circle-o-notch fa-spin"></i></button></div>
@@ -60,7 +60,7 @@
   </div>
 
   <!-- Add new script section -->
-  <div ng-show="viewNewScript" class="row">
+  <div ng-if="viewNewScript" class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-body">
@@ -69,8 +69,8 @@
             <div class="form-group">
       				<label for="inputType" class="col-md-4 control-label"><strong>Select Activity</strong></label>
       				<div class="col-md-5">
-      					<select ng-model="selectedActivity" ng-change="selectScriptFile()" class="form-control">
-                  <option ng-repeat="activity in localScripts" value="{{$index}}" ng-select="selectActivity(activity)">{{activity.name}}</option>
+      					<select ng-model="input.selectedActivity" ng-change="selectScriptFile()" class="form-control" >
+                  <option ng-repeat="activity in localScripts" value="{{$index}}">{{activity.name}}</option>
                 </select>
       				</div>
       			</div>
@@ -89,11 +89,11 @@
       				</div>
       			</div-->
 
-      			<div ng-show="localScripts[selectedActivity].args.active" class="form-group top-buffer-sm">
-      				<label for="inputArgs" class="col-md-4 control-label">{{localScripts[selectedActivity].args.label}}</label>
+      			<div ng-show="localScripts[input.selectedActivity].args.active" class="form-group top-buffer-sm">
+      				<label for="inputArgs" class="col-md-4 control-label">{{localScripts[input.selectedActivity].args.label}}</label>
       				<div class="col-md-5">
-      					<input ng-show="localScripts[selectedActivity].args.type == 'text'" type="text" ng-model="script.args" class="form-control" id="inputArgs" placeholder="{{localScripts[selectedActivity].args.placeholder}}">
-                <input ng-show="localScripts[selectedActivity].args.type == 'file'" type="file" ng-model="script.args" class="form-control" id="inputArgs" onchange="angular.element(this).scope().file_changed(this)">
+      					<input ng-show="localScripts[input.selectedActivity].args.type == 'text'" type="text" ng-model="script.args" class="form-control" id="inputArgs" placeholder="{{localScripts[input.selectedActivity].args.placeholder}}">
+                <input ng-show="localScripts[input.selectedActivity].args.type == 'file'" type="file" ng-model="script.args" class="form-control" id="inputArgs" onchange="angular.element(this).scope().file_changed(this)">
       				</div>
       			</div>
 
