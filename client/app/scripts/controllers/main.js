@@ -11,6 +11,7 @@ angular.module('uMasterApp')
   .controller('MainCtrl', function ($scope, User, auth, store, $location, umasterSocket, Script) {
     $scope.viewSignup = true;
     $scope.user = {};
+    $scope.pinCode = "";
 
     if (store.get('profile')) {
       $scope.loading = true;
@@ -37,6 +38,7 @@ angular.module('uMasterApp')
     $scope.runScript = function(script) {
       script.pinCode = $scope.pinCode;
       script.email = $scope.profile.email;
+      console.log(script);
       umasterSocket.emit('script', script);
     };
 
