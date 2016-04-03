@@ -18,7 +18,7 @@ angular.module('uMasterApp')
       // create or update the user
       User.one().customPOST({user: store.get('profile')}).then(function(user) {
 
-        console.log(user);
+        //console.log(user);
         $scope.profile = store.get('profile');
         $scope.loggedin = true;
         $scope.loading = false;
@@ -38,7 +38,6 @@ angular.module('uMasterApp')
     $scope.runScript = function(script) {
       script.pinCode = $scope.pinCode;
       script.email = $scope.profile.email;
-      console.log(script);
       umasterSocket.emit('script', script);
     };
 
@@ -46,17 +45,23 @@ angular.module('uMasterApp')
       $scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
-        console.log(profile);
+        //console.log(profile);
 
         // create or update the user
         User.one().customPOST({user: profile}).then(function(user) {
 
-          console.log(user);
+          //console.log(user);
           store.set('profile', profile);
           store.set('token', token);
           $scope.profile = profile;
           $scope.loggedin = true;
           $scope.loading = false;
+
+          Script.one().get({user: store.get('profile').email}).then(function(scripts) {
+            $scope.scripts = scripts;
+          }, function(response) {
+            console.log(response);
+          });
 
         }, function(response) {
           console.log(response);
