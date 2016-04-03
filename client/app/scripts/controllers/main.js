@@ -14,6 +14,7 @@ angular.module('uMasterApp')
     $scope.viewNewScript = false;
     $scope.script = {};
     $scope.input = {selectedActivity: 0};
+    $scope.pinCode = "";
 
     if (store.get('profile')) {
       $scope.loading = true;
@@ -41,6 +42,9 @@ angular.module('uMasterApp')
     }
 
     umasterSocket.on('script-accepted', function(script) {
+
+      console.log(script);
+
       if (script.pinCode == $scope.pinCode) {
         Script.one('run').one(script.name).customPOST({script: script}).then(function(data) {
           console.log(data);
@@ -88,9 +92,11 @@ angular.module('uMasterApp')
       store.remove('profile');
       store.remove('token');
       $scope.loggedin = false;
-      $scope.profile = {};
 
       umasterSocket.emit('unregister', $scope.profile);
+      $scope.profile = {};
+
+
       $scope.pinCode = "";
     };
 

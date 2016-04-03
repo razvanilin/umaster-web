@@ -1,3 +1,3 @@
 module.exports = {
-	host: 'http://umaster.razvanilin.com'
+	host: 'http://localhost:3030'
 };
