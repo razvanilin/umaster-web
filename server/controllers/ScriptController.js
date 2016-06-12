@@ -1,6 +1,9 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
+<<<<<<< HEAD
 var fs = require('fs');
+=======
+>>>>>>> locker
 var request = require('request');
 
 module.exports = function(expressApp, route) {
@@ -28,6 +31,7 @@ module.exports = function(expressApp, route) {
         responseString = JSON.parse(body);
         return res.status(200).send(responseString);
       } catch (e) {
+<<<<<<< HEAD
         return res.status(200).send([]);
       }
     });
@@ -169,6 +173,11 @@ module.exports = function(expressApp, route) {
     }
 
     return res.status(200).send('Run script accepted.');
+=======
+        return res.status(400).send(e);
+      }
+    });
+>>>>>>> locker
   });
   // ------------------------------------------------------------------------
 

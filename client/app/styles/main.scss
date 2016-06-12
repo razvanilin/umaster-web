@@ -1,4 +1,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$brand-primary: #A76F94 !default;
+$jumbotron-bg: #ACD0AE !default;
+$panel-bg: #ACD0AE !default;
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -14,7 +18,11 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 body {
   padding: 0;
   padding-top: 70px;
+<<<<<<< HEAD
   background-color: #333333;
+=======
+  background-color: #4A8E4E;
+>>>>>>> locker
 }
 
 .navbar {
@@ -25,6 +33,33 @@ body {
 
 }
 
+<<<<<<< HEAD
+=======
+.form-control {
+  padding-left: 10px !important;
+}
+
+[onlick],
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: $brand-primary;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: $brand-primary;
+  color: #fff;
+}
+
+.pointer {
+  cursor: pointer;
+}
+>>>>>>> locker
 
 .top-buffer-sm {
   margin-top: 25px;

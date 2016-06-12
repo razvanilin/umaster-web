@@ -19,7 +19,7 @@ angular
     'ngResource'
   ])
   .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider) {
-    RestangularProvider.setBaseUrl("http://localhost:8000");
+    RestangularProvider.setBaseUrl("http://localhost:8001");
 
     jwtInterceptorProvider.tokenGetter = ['store', function(store) {
       // Return the saved token
