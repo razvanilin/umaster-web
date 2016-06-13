@@ -11,12 +11,6 @@ angular.module('uMasterApp')
   .controller('MainCtrl', function ($scope, User, auth, store, $location, umasterSocket, Script) {
     $scope.viewSignup = true;
     $scope.user = {};
-<<<<<<< HEAD
-    $scope.viewNewScript = false;
-    $scope.script = {};
-    $scope.input = {selectedActivity: 0};
-=======
->>>>>>> locker
     $scope.pinCode = "";
 
     if (store.get('profile')) {
@@ -24,48 +18,15 @@ angular.module('uMasterApp')
       // create or update the user
       User.one().customPOST({user: store.get('profile')}).then(function(user) {
 
-<<<<<<< HEAD
-        console.log(user);
-        $scope.profile = store.get('profile');
-        $scope.loggedin = true;
-
-        umasterSocket.emit('register', $scope.profile);
-        $scope.loading = false;
-
-        Script.one().get({user: store.get('profile').email}).then(function(scripts) {
-          console.log(scripts);
-          $scope.scripts = scripts;
-        }, function(response) {
-          console.log(response);
-        });
-
-=======
         //console.log(user);
         $scope.profile = store.get('profile');
         $scope.loggedin = true;
         $scope.loading = false;
 
->>>>>>> locker
       }, function(response) {
         console.log(response);
         $scope.loading = false;
       });
-<<<<<<< HEAD
-    }
-
-    umasterSocket.on('script-accepted', function(script) {
-
-      console.log(script);
-
-      if (script.pinCode == $scope.pinCode) {
-        Script.one('run').one(script.name).customPOST({script: script}).then(function(data) {
-          console.log(data);
-        });
-      } else {
-        console.log("Script denied.");
-      }
-    });
-=======
 
       Script.one().get({user: store.get('profile').email}).then(function(scripts) {
         $scope.scripts = scripts;
@@ -79,40 +40,21 @@ angular.module('uMasterApp')
       script.email = $scope.profile.email;
       umasterSocket.emit('script', script);
     };
->>>>>>> locker
 
     $scope.signin = function() {
       $scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
-<<<<<<< HEAD
-        console.log(profile);
-=======
-        //console.log(profile);
->>>>>>> locker
-
         // create or update the user
         User.one().customPOST({user: profile}).then(function(user) {
 
-<<<<<<< HEAD
-          console.log(user);
-=======
-          //console.log(user);
->>>>>>> locker
           store.set('profile', profile);
           store.set('token', token);
           $scope.profile = profile;
           $scope.loggedin = true;
-<<<<<<< HEAD
-          umasterSocket.emit('register', $scope.profile);
-          $scope.loading = false;
-
-          Script.one().get({user: profile.email}).then(function(scripts) {
-=======
           $scope.loading = false;
 
           Script.one().get({user: store.get('profile').email}).then(function(scripts) {
->>>>>>> locker
             $scope.scripts = scripts;
           }, function(response) {
             console.log(response);

@@ -48,11 +48,9 @@ expressApp.set('/', path.join(__dirname, 'dist'));
 // initialization and is ready to create browser windows.
 //app.on('ready', function() {
   // Create the browser window.
-<<<<<<< HEAD
-  mainWindow = new BrowserWindow({width: 1024, height: 764, title: "uMaster", "nodeIntegration":false});
-=======
+
   //mainWindow = new BrowserWindow({width: 1024, height: 764, title: "uMaster-mobile"});
->>>>>>> locker
+
 
   // and load the index.html of the app.
   var url = path.join(__dirname, "dist", "index.html");

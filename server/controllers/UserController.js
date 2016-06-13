@@ -2,8 +2,6 @@ var request = require('request');
 
 module.exports = function(expressApp, route) {
 
-<<<<<<< HEAD
-=======
   /*
    *  Route to request a create or an update for a user
    */
@@ -40,7 +38,6 @@ module.exports = function(expressApp, route) {
   });
   // ------------------------------------------------------------------------
 
->>>>>>> locker
   /*var options = {
     url: expressApp.settings.host,
     method: "GET",
