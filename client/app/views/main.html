@@ -1,20 +1,23 @@
 <ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
-<div ng-show="!loggedin && !loading" class="jumbotron" style="margin-top:20px;">
-  <p><img src="images/logo-color.png" height="200px"></p>
-  <h2>uMaster</h2>
-  <p class="lead">
-    Be the master of your devices
-  </p>
-  <p>
-    <button class="btn btn-lg btn-primary" ng-click="signin()">Become uMaster</button>
-  </p>
+<div class="row">
+  <div class="col s6 offset-s3">
+    <div ng-show="!loggedin && !loading" class="card-panel grey lighten-5 z-depth-1 hoverable" style="text-align:center">
+      <div class="card-image">
+        <img src="images/logo-color.png" style="max-width:250px">
+        <h2 class="card-title">uMaster</h2>
+      </div>
+      <p class="flow-text">
+        Be the master of your devices
+      </p>
+      <p>
+        <button class="waves-effect waves-light btn-large" ng-click="signin()">Become uMaster</button>
+      </p>
 
-  <p class="text-muted">Create activities on your PC that can be activated remotely!</p>
+      <!--p class="flow-text">Create activities on your PC that can be activated remotely!</p-->
+    </div>
+  </div>
 </div>
 
-<div ng-show="!loggedin && loading" class="row" style="text-align:center">
-  <h1><i class="fa fa-circle-o-notch fa-spin"></i></h1>
-</div>
 
 <div ng-show="loggedin">
 
@@ -22,26 +25,37 @@
   <div class="row">
     <div ng-repeat="scr in scripts">
       <div class="clearfix" ng-if="$index % 3 == 0"></div>
-      <div class="col-md-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading" style="text-align:center">
-            <h4>{{scr.name}}</h4>
+      <div class="col s12 m4">
+        <div class="card grey lighten-5 z-depth-1 hoverable">
+          <div class="card-content">
+            <span class="card-title">
+              <a href="#{{scr._id}}" class="grey-text text-darken-3" modal>{{scr.name}}</a>
+            </span>
+            <p class="truncate">
+              <a href="#{{scr._id}}" class="grey-text text-darken-1" modal>{{scr.description}}</a>
+            </p>
           </div>
-          <div class="panel-body">
-            {{scr.description}}
-          </div>
-          <div class="panel-footer" style="padding:0px;margin:0px">
-            <div class="row" style="padding:0px;margin:0px;">
-              <div class="btn-group" style="width:100%">
-                <button class="btn btn-default btn-block" style="width:100%;" ng-click="runScript(scr)"><i class="fa fa-play text-primary"></i> Run Script</button>
-              </div>
-            </div>
+          <div class="card-action">
+            <a class="waves-effect waves-light" ng-click="runScript(scr)"><i class="fa fa-play text-primary"></i> Run Script</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div ng-show="loggedin" class="fixed-action-btn vertical" style="bottom: 60px; right: 24px;">
+  <a class="btn-floating btn-large">
+    <img ng-src="{{profile.picture}}" class="circle" style="max-height:60px;">
+  </a>
+  <ul>
+    <li><a tooltipped class="btn-floating red" data-position="left" data-delay="50" data-tooltip="Sign out" ng-click="logout()">
+      <i class="material-icons">power_settings_new</i></a></li>
+    <li><a tooltipped class="btn-floating blue" data-position="left" data-delay="50" data-tooltip="Account settings">
+      <i class="material-icons">settings</i></a></li>
+  </ul>
+</div>
+
 
 <footer class="footer" style="width:100%">
     <p class="text-muted" style="font-size:80%;">Developed by  <a href="http://razvanilin.com/">Răzvan Ilin</a> | uMaster </p>
