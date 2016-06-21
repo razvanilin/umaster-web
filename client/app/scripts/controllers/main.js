@@ -12,6 +12,24 @@ angular.module('uMasterApp')
     $scope.viewSignup = true;
     $scope.user = {};
     $scope.pinCode = "";
+    $scope.connection = {};
+
+    // Socket messages
+    umasterSocket.on('refresh-activities', function(data) {
+      console.log("hello");
+      Script.one().get({user: store.get('profile').email}).then(function(scripts) {
+        $scope.scripts = scripts;
+      }, function(response) {
+        console.log(response);
+      });
+    });
+
+    umasterSocket.on("register-complete", function(data) {
+      console.log(data);
+      $scope.connection = data;
+    });
+
+    // ---------------------------
 
     if (store.get('profile')) {
       $scope.loading = true;
@@ -20,8 +38,13 @@ angular.module('uMasterApp')
 
         //console.log(user);
         $scope.profile = store.get('profile');
+        $scope.profile.type = "web";
+
         $scope.loggedin = true;
         $scope.loading = false;
+
+        // emit the profile again
+        umasterSocket.emit("register", $scope.profile);
 
       }, function(response) {
         console.log(response);
@@ -51,6 +74,12 @@ angular.module('uMasterApp')
           store.set('profile', profile);
           store.set('token', token);
           $scope.profile = profile;
+          // register the type of the profile
+          $scope.profile.type = "web";
+
+          // emit the new profile
+          umasterSocket.emit("register", $scope.profile);
+
           $scope.loggedin = true;
           $scope.loading = false;
 
