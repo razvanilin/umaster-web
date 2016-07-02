@@ -23,7 +23,7 @@
 
   <!-- All scripts section -->
   <div class="row">
-    <div ng-repeat="scr in scripts">
+    <div ng-repeat="scr in scripts" ng-show="scr.active">
       <div class="clearfix" ng-if="$index % 3 == 0"></div>
       <div class="col s12 m4">
         <div class="card grey lighten-5 z-depth-1 hoverable">
