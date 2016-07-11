@@ -25,6 +25,7 @@ angular.module('uMasterApp')
     });
 
     umasterSocket.on("register-complete", function(data) {
+      console.log(data);
       $scope.connection = data;
     });
 
