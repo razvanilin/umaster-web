@@ -17,7 +17,8 @@ angular
     'angular-jwt',
     'ngRoute',
     'ngResource',
-    'ui.materialize'
+    'ui.materialize',
+    'config'
   ])
   .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider) {
     RestangularProvider.setBaseUrl("http://localhost:8001");
@@ -55,12 +56,18 @@ angular
   .factory('Script', function(Restangular) {
     return Restangular.service('script');
   })
-  .factory('umasterSocket', function(socketFactory, store) {
-    var socket;
+  .factory('umasterSocket', function(socketFactory, store, ENV) {
+    var socketUrl;
+    if (ENV == 'production') {
+      socketUrl = "http://umaster-server.razvanilin.com";
+    } else if (ENV == 'development') {
+      socketUrl = "http://localhost:3030";
+    }
 
+    var socket;
     if (store.get('profile')) {
       socket = socketFactory({
-        ioSocket: io.connect('http://localhost:3030', {
+        ioSocket: io.connect(socketUrl, {
           query: "email=" + store.get('profile').email + "&type=web"
         })
       });
