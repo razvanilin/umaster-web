@@ -8,7 +8,7 @@
  * Controller of the uMasterApp
  */
 angular.module('uMasterApp')
-  .controller('MainCtrl', function ($scope, User, auth, store, $location, umasterSocket, Script) {
+  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script) {
     $scope.viewSignup = true;
     $scope.user = {};
     $scope.pinCode = "";
@@ -85,6 +85,8 @@ angular.module('uMasterApp')
 
           Script.one().get({user: store.get('profile').email}).then(function(scripts) {
             $scope.scripts = scripts;
+            // refresh window workaround for refreshing the socket connection settings
+            $window.location.reload();
           }, function(response) {
             console.log(response);
           });

@@ -55,10 +55,20 @@ angular
   .factory('Script', function(Restangular) {
     return Restangular.service('script');
   })
-  .factory('umasterSocket', function(socketFactory) {
-    return socketFactory({
-      ioSocket: io.connect('http://localhost:3030')
-    });
+  .factory('umasterSocket', function(socketFactory, store) {
+    var socket;
+
+    if (store.get('profile')) {
+      socket = socketFactory({
+        ioSocket: io.connect('http://localhost:3030', {
+          query: "email=" + store.get('profile').email + "&type=web"
+        })
+      });
+    } else {
+      socket = socketFactory();
+    }
+
+    return socket;
   })
   .run(function($rootScope, auth, store, jwtHelper, $location) {
     // This events gets triggered on refresh or URL change
