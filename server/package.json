@@ -1,6 +1,6 @@
 {
   "name": "uMaster",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=development rm settings.js && cp settings-dev.js settings.js && nodemon main.js",
