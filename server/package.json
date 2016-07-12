@@ -2,6 +2,10 @@
   "name": "uMaster",
   "version": "0.0.1",
   "main": "main.js",
+  "scripts": {
+    "start": "NODE_ENV=development rm settings.js && cp settings-dev.js settings.js && nodemon main.js",
+    "start-prod": "NODE_ENV=production rm settings.js && cp settings-prod.js settings.js && node main.js"
+  },
   "dependencies": {
     "body-parser": "^1.14.1",
     "cookie-parser": "^1.4.0",
