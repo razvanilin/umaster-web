@@ -25,9 +25,9 @@ angular
     if (ENV == "development") {
       baseUrl = "http://localhost:8001";
     } else if (ENV == "production") {
-      baseUrl = "188.226.229.203:8001";
+      baseUrl = "http://188.226.229.203:8001";
     }
-    
+
     RestangularProvider.setBaseUrl(baseUrl);
 
     jwtInterceptorProvider.tokenGetter = ['store', function(store) {
