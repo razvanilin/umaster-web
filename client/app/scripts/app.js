@@ -20,8 +20,15 @@ angular
     'ui.materialize',
     'config'
   ])
-  .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider) {
-    RestangularProvider.setBaseUrl("http://localhost:8001");
+  .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider, ENV) {
+    var baseUrl;
+    if (ENV == "development") {
+      baseUrl = "http://localhost:8001";
+    } else if (ENV == "production") {
+      baseUrl = "188.226.229.203:8001";
+    }
+    
+    RestangularProvider.setBaseUrl(baseUrl);
 
     jwtInterceptorProvider.tokenGetter = ['store', function(store) {
       // Return the saved token
