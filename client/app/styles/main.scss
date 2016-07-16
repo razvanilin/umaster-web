@@ -191,6 +191,11 @@ nav img {
   animation-duration: 1s;
 }
 
+.centered {
+  text-align: center;
+}
+
+/* ANIMATIONS */
 @keyframes fadein {
   from {margin-top:30px; opacity: 0;}
   to {margin-top: $element-top-margin; opacity: 1;}
