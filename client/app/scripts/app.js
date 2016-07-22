@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngResource',
     'ui.materialize',
-    'config'
+    'config',
+    'ng.deviceDetector'
   ])
   .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider) {
     RestangularProvider.setBaseUrl("http://localhost:8001");
