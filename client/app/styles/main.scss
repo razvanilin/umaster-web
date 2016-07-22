@@ -9,7 +9,26 @@ $primary-color: #70AA74 !default;
 $secondary-color: #A76F94 !default;
 $link-color: #ACD0AE !default;
 $card-link-color: #A76F94 !default;
+// $secondary-bg: #CBA8BF !default;
+$secondary-bg: #A56D92 !default;
 //$panel-bg: #ACD0AE !default;
+
+$green: (
+  "base":       #A76F94,
+  "lighten-5":  #E8F5E9,
+  "lighten-4":  #C8E6C9,
+  "lighten-3":  #A5D6A7,
+  "lighten-2":  #81C784,
+  "lighten-1":  #66BB6A,
+  "darken-1":   #43A047,
+  "darken-2":   #388E3C,
+  "darken-3":   #2E7D32,
+  "darken-4":   #1B5E20,
+  "accent-1":    #B9F6CA,
+  "accent-2":    #69F0AE,
+  "accent-3":    #00E676,
+  "accent-4":    #00C853
+) !default;
 
 // bower:scss
 // endbower
@@ -193,6 +212,22 @@ nav img {
 
 .centered {
   text-align: center;
+}
+
+.secondary-bg {
+  background-color: $secondary-bg;
+}
+
+.promo i {
+    color: $primary-color;
+    font-size: 7rem;
+    display: block;
+}
+
+.promo-caption {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0;
 }
 
 /* ANIMATIONS */

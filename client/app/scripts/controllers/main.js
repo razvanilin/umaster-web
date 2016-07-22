@@ -8,7 +8,7 @@
  * Controller of the uMasterApp
  */
 angular.module('uMasterApp')
-  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script) {
+  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script, deviceDetector) {
     $scope.viewSignup = true;
     $scope.user = {};
     $scope.pinCode = "";
@@ -113,4 +113,12 @@ angular.module('uMasterApp')
 
       $scope.pinCode = "";
     };
+
+    $scope.downloadClient = function() {
+      if (deviceDetector.os == "mac") {
+        $window.open("https://github.com/razvanilin/umaster-client/releases/download/untagged-fea942fff905bee46bd5/uMaster-darwin-x64-v0.0.3-alpha.dmg");
+      } else {
+        $window.open('https://github.com/razvanilin/umaster-client/releases', '_blank');
+      }
+    }
   });

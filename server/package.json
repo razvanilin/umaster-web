@@ -4,6 +4,7 @@
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=development rm settings.js && cp settings-dev.js settings.js && nodemon main.js",
+    "start-win": "del /F /S /Q /A settings.js && copy /Y settings-dev.js settings.js && nodemon main .",
     "start-prod": "NODE_ENV=production rm settings.js && cp settings-prod.js settings.js && node main.js",
     "build": "cd ../client && grunt build && cd ../server && nohup node main.js &"
   },
