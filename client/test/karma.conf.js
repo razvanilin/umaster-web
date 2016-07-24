@@ -24,6 +24,8 @@ module.exports = function(config) {
       // bower:js
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
+      'bower_components/materialize/bin/materialize.js',
+      'bower_components/angular-materialize/src/angular-materialize.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/lodash/lodash.js',
@@ -34,8 +36,6 @@ module.exports = function(config) {
       'bower_components/auth0-angular/build/auth0-angular.js',
       'bower_components/a0-angular-storage/dist/angular-storage.js',
       'bower_components/angular-jwt/dist/angular-jwt.js',
-      'bower_components/materialize/bin/materialize.js',
-      'bower_components/angular-materialize/src/angular-materialize.js',
       'bower_components/re-tree/re-tree.js',
       'bower_components/ng-device-detector/ng-device-detector.js',
       'bower_components/angular-mocks/angular-mocks.js',
