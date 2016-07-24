@@ -55,7 +55,18 @@
         <button class="waves-effect waves-light btn-large" ng-click="signin()">Become uMaster</button>
         <button class="waves-effect waves-light btn-large hide-on-sm-and-up" ng-click="downloadClient()">Download Client</button>
       </p>
-
+      <p>
+        <div id="termsModal" class="modal">
+          <div class="modal-content">
+            <h4 class="modal-title">Terms & Conditions</h4>
+            <ng-include src="'views/terms.html'"></ng-include>
+          </div>
+          <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect btn-flat">Cancel</a>
+          </div>
+        </div>
+        <a href="#termsModal" modal>Terms & Conditions</a>
+      </p>
       <!--p class="flow-text">Create activities on your PC that can be activated remotely!</p-->
     </div>
   </div>
