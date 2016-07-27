@@ -1,37 +1,7 @@
 <ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
 <div class="row">
 
-  <div ng-show="!loggedin && !loading" class="col s12 m3 hide-on-small-and-down">
-    <div class="row">
-      <div class="card grey lighten-5 z-depth-1 hoverable">
-        <div class="card-content">
-          <h4 class="card-title">Newsletter</h4>
-          <p>Latest news about uMaster and beta invites directly to your email</p>
-
-          <div id="mc_embed_signup">
-          <form action="//razvanilin.us8.list-manage.com/subscribe/post?u=40d7e47179bec7fefe203400c&amp;id=28a1e3a527" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-              <div id="mc_embed_signup_scroll">
-          <div class="input-field">
-          	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-            <label for="mce-EMAIL">Email Address </label>
-          </div>
-          	<div id="mce-responses" class="clear">
-          		<div class="response" id="mce-error-response" style="display:none"></div>
-          		<div class="response" id="mce-success-response" style="display:none"></div>
-          	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_40d7e47179bec7fefe203400c_28a1e3a527" tabindex="-1" value=""></div>
-              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="waves-effect waves-light btn"></div>
-              </div>
-          </form>
-          </div>
-          <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
-          <!--End mc_embed_signup-->
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div ng-show="!loggedin && !loading" class="col s12 m6">
+  <div ng-show="!loggedin && !loading" class="col s12 m8 offset-m2">
     <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="text-align:center">
       <div class="card-image">
         <img src="images/logo-color.png" style="max-width:230px">
@@ -43,7 +13,7 @@
 
       <div class=row>
         <div class="col s12 m4">
-          <a href="https://twitter.com/intent/tweet?button_hashtag=umaster" class="twitter-hashtag-button" data-size="large" data-text="Check out this new project! http://umaster.razvanilin.com" data-show-count="false">Tweet #umaster</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>        </div>
+          <a href="https://twitter.com/intent/tweet?button_hashtag=umaster" class="twitter-hashtag-button" data-size="large" data-text="Check out this new project at http://umaster.xyz" data-show-count="false">Tweet #umaster</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>        </div>
         <div class="col s12 m4">
           <iframe src="https://ghbtns.com/github-btn.html?user=razvanilin&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
         </div>
@@ -71,11 +41,14 @@
       <!--p class="flow-text">Create activities on your PC that can be activated remotely!</p-->
     </div>
   </div>
+</div>
 
-  <div ng-show="!loggedin && !loading" class="col s12 m3">
-
-    <div class="row">
-      <div class="card grey lighten-5 z-depth-1 hoverable">
+<div ng-show="!loggedin && !loading" class="row">
+  <div class="card z-depth-1 hoverable">
+    <div class="card-content">
+      <div class="row">
+    <div ng-show="!loggedin && !loading" class="col s12 m4">
+      <div class="card lighten-5 hoverable no-shadow">
         <div class="card-content">
           <span class="card-title">
             Latest Version
@@ -91,11 +64,11 @@
       </div>
     </div>
 
-    <div class="row hide-on-med-and-up">
-      <div class="card grey lighten-5 z-depth-1 hoverable">
+    <div class="col s12 m4">
+      <div class="card lighten-5 z-depth-1 hoverable no-shadow">
         <div class="card-content">
           <h4 class="card-title">Newsletter</h4>
-          <p>Latest news about uMaster and beta invites directly to your email</p>
+          <p>Latest news about uMaster and get beta invites directly to your email</p>
 
           <div id="mc_embed_signup">
           <form action="//razvanilin.us8.list-manage.com/subscribe/post?u=40d7e47179bec7fefe203400c&amp;id=28a1e3a527" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -119,8 +92,8 @@
       </div>
     </div>
 
-    <div ng-show="!loggedin && !loading" class="row">
-        <div class="card grey lighten-5 z-depth-1 hoverable">
+    <div ng-show="!loggedin && !loading" class="col s12 m4">
+        <div class="card lighten-5 z-depth-1 hoverable no-shadow">
           <div class="card-content">
             <h4 class="card-title">Support the project</h4>
             <div class="section">
@@ -141,6 +114,9 @@
         </div>
       </div>
     </div>
+  </div>
+  </div>
+</div>
 </div>
 
 <div ng-show="!loggedin && !loading" class="row">

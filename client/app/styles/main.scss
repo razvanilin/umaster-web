@@ -214,6 +214,10 @@ nav img {
   text-align: center;
 }
 
+.primary-bg {
+  background-color: #4A8E4E;
+}
+
 .secondary-bg {
   background-color: $secondary-bg;
 }
@@ -232,6 +236,10 @@ nav img {
 
 .toLeft {
   text-align: left;
+}
+
+.no-shadow {
+  box-shadow: none;
 }
 
 /* ANIMATIONS */
