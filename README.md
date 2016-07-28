@@ -11,6 +11,7 @@ uMaster is a PC/Web (mobile soon) application that allows you to use predefined 
 
 * The web app can be found at: [umaster.xyz](umaster.xyz) where you can activate ativities on your PC
 * The PC client can be found [here](https://github.com/razvanilin/umaster-client/releases). The PC activities are created there
+* Check out the [wiki here](https://github.com/razvanilin/uMaster/wiki)
 
 
 # Wait, what?
@@ -28,4 +29,5 @@ I'm still working on improving the security of the app, but yes, it is quite sec
 The scripts cannot be written or plugged in remotely through the apps, so nobody can write a script to cause any damage to your PC. The plan is to have a repository of scripts that can be selected by the users.
 
 **This app is in the early development stage so expect many bugs along the way**
+
 You can help by [opening new issues](https://github.com/razvanilin/umaster-web/issues) about any problems you encounter or any improvements you might think of.
