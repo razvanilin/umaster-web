@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>uMaster | Remote activity runner</title>
-    <meta name="description" content="">
+    <meta name="description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="uMaster">
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://umaster.xyz">
     <meta property="og:image" content="https://github.com/razvanilin/umaster-web/raw/master/client/app/images/logo-color.png">
-    <meta property="og:description" content="Remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
+    <meta property="og:description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
     <meta property="fb:app_id" content="1545477552419601">
 
     <!-- Twitter meta -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@razvanilin">
     <meta name="twitter:title" content="uMaster - Remote activity runner">
-    <meta name="twitter:description" content="Remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
+    <meta name="twitter:description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
     <meta name="twitter:image" content="https://github.com/razvanilin/umaster-web/raw/master/client/app/images/logo-color.png">
     <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script src="https://apis.google.com/js/platform.js?onload=start" parsetags="explicit" async defer></script>
@@ -52,16 +52,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-48182378-3');
-       ga('send', 'pageview');
-    </script>
   </head>
   <body ng-app="uMasterApp">
     <!--[if lte IE 8]>
@@ -100,6 +90,17 @@
     <div ng-view=""></div>
     </div>
 
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-48182378-3');
+       ga('send', 'pageview');
+    </script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <!--script>window.$ = window.jQuery = require('..\\client\\bower_components\\jquery\\dist\\jquery.js');</script-->
     <!-- build:js(.) scripts/vendor.js -->
@@ -143,5 +144,6 @@
         <!-- endbuild -->
         <!-- Place this tag in your head or just before your close body tag. -->
       <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <script src="https://client.crisp.im/l/edabc96e-8185-4e16-830d-41f5c08ce247.js" defer></script>
 </body>
 </html>
