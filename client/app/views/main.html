@@ -1,32 +1,36 @@
 <ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
 <!-- <div class="marketing-bg intro-wrapper" ng-class="{'hide-wall': wallHidden}"></div> -->
+
 <div ng-show="!loggedin && !loading" class="marketing-bg top-buffer-sm">
   <div class="row">
     <div class="col s12 m2 center">
-      <img src="images/logo-color.png" style="max-width: 75px">
+      <div class="valign-wrapper hide-on-small-only"><img src="images/logo-color.png" style="max-width: 75px"><span class="flow-text white-text valign">uMaster</span></div>
+      <img src="images/logo-color.png" style="max-width: 100px" class="hide-on-med-and-up">
     </div>
 
-    <div class="col offset-m6 m4 hide-on-small-only center">
-      <button class="waves-effect waves-light btn btn-flat white-text" ng-click="signin()">Sign Up</button>
+    <div class="col offset-m6 m4 hide-on-small-only right">
+      <a class="waves-effect waves-light btn btn-flat white-text" ng-click="signin()">Sign Up</a>
       <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn btn-flat white-text">Download Client</a>
     </div>
   </div>
 
+  <!-- <div class="top-buffer-sm hide-on-large-only"></div>
+  <div class="top-buffer-lg hide-on-med-and-down"></div> -->
   <div class="row">
-    <div class="col s12 offset-m4 m4 white-text center">
-      <h1>uMaster</h1>
-      <p class="flow-text">Running activities on your personal computer remotely</p>
+    <div class="col s12 m12 white-text center">
+      <h1>uMaster<small class="grey-text text-darken-5"> alpha</small></h1>
+      <span class="flow-text">Running activities on your personal computer remotely</span>
     </div>
   </div>
 
   <div class="row center">
-    <a href="https://twitter.com/intent/tweet?button_hashtag=umaster" class="twitter-hashtag-button" data-size="large" data-text="uMaster: the remote activity runner. Check it out at http://umaster.xyz" data-show-count="false">Tweet #umaster</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a href="https://twitter.com/intent/tweet?button_hashtag=umaster" class="twitter-hashtag-button" data-size="large" data-text="uMaster: the remote activity runner. Check it out at http://umaster.xyz by @razvanilin" data-show-count="false">Tweet #umaster</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 
   <div class="row">
-    <div class="col s12 m12 center top-buffer-sm">
-        <button class="waves-effect waves-light btn-large btn-flat white-text" ng-click="signin()">Become uMaster</button>
-        <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn-large btn-flat white-text">Download Client</a>
+    <div class="col s12 m12 center">
+        <a class="waves-effect waves-light btn-large white-text top-buffer-sm" ng-click="signin()">Become uMaster</a>
+        <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn-large white-text top-buffer-sm">Download Client</a>
     </div>
   </div>
 </div>
@@ -57,23 +61,6 @@
           <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
           <!--End mc_embed_signup-->
     </div>
-
-    <!-- <div ng-show="!loggedin && !loading" class="col s12 m4">
-        <div class="card lighten-5 z-depth-1 hoverable no-shadow">
-          <div class="card-content">
-            <h4 class="card-title">Support the project</h4>
-            <div class="section">
-              <iframe src="https://ghbtns.com/github-btn.html?user=razvanilin&repo=uMaster&type=fork&count=true&size=small" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>
-            </div>
-            <div class="divider"></div>
-            <div class="section center">
-              <p>Buy me a coffee so I can transform it into code.</p>
-              <br />
-              <a href="https://www.paypal.me/razvanilin/2" target="_blank" class="waves-effect waves-light btn"><i class="fa fa-coffee fa-2x" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-      </div> -->
   </div>
 </div>
 <!-- </div> -->
@@ -154,6 +141,18 @@
 
     <div class="section center">
       <a class="waves-effect waves-light btn-large green" ng-click="signin()"><span class="flow-text">Give uMaster a go now</span></a>
+    </div>
+
+    <div class="divider top-buffer-sm"></div>
+
+    <div class="row center top-buffer-sm">
+      <div class="col s12 m12">
+            <h4 class="card-title">Support the project</h4>
+            <p class="flow-text">This app is and will be offered for free</p>
+            <p>Buy me a coffee so I can transform it into code.</p>
+            <br />
+            <a href="https://www.paypal.me/razvanilin/2" target="_blank" class="waves-effect waves-light btn green"><i class="fa fa-coffee fa-2x" aria-hidden="true"></i></a>
+      </div>
     </div>
   </div>
 
