@@ -1,72 +1,40 @@
 <ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
-<div class="row">
+<!-- <div class="marketing-bg intro-wrapper" ng-class="{'hide-wall': wallHidden}"></div> -->
+<div ng-show="!loggedin && !loading" class="marketing-bg top-buffer-sm">
+  <div class="row">
+    <div class="col s12 m2 center">
+      <img src="images/logo-color.png" style="max-width: 75px">
+    </div>
 
-  <div ng-show="!loggedin && !loading" class="col s12 m8 offset-m2">
-    <div class="card-panel grey lighten-5 z-depth-1 hoverable" style="text-align:center">
-      <div class="card-image">
-        <img src="images/logo-color.png" style="max-width:230px">
-        <h2 class="card-title">uMaster - <span class="light grey-text">alpha</span></h2>
-      </div>
-      <p class="flow-text">
-        Be the master of your devices
-      </p>
+    <div class="col offset-m6 m4 hide-on-small-only center">
+      <button class="waves-effect waves-light btn btn-flat white-text" ng-click="signin()">Sign Up</button>
+      <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn btn-flat white-text">Download Client</a>
+    </div>
+  </div>
 
-      <div class=row>
-        <div class="col s12 m4">
-          <a href="https://twitter.com/intent/tweet?button_hashtag=umaster" class="twitter-hashtag-button" data-size="large" data-text="Check out this new project at http://umaster.xyz" data-show-count="false">Tweet #umaster</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>        </div>
-        <div class="col s12 m4">
-          <iframe src="https://ghbtns.com/github-btn.html?user=razvanilin&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
-        </div>
-        <div class="col s12 m4">
-          <iframe src="https://ghbtns.com/github-btn.html?user=razvanilin&repo=uMaster&type=star&count=false&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-        </div>
-      </div>
-      <p>
-        <button class="waves-effect waves-light btn-large" ng-click="signin()">Become uMaster</button>
-        <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn-large hide-on-sm-and-up">Download Client</a>
-      </p>
-      <p>
-        <div id="termsModal" class="modal toLeft">
-          <div class="modal-content">
-            <h4 class="modal-title">Terms & Conditions</h4>
-            <ng-include src="'views/terms.html'"></ng-include>
-          </div>
-          <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect btn-flat">Cancel</a>
-          </div>
-        </div>
-        <!--a href="#termsModal" modal>Terms & Conditions</a-->
-        <a href="https://github.com/razvanilin/umaster-web/blob/master/LICENSE" target="_blank">Terms & Conditions</a>
-      </p>
-      <!--p class="flow-text">Create activities on your PC that can be activated remotely!</p-->
+  <div class="row">
+    <div class="col s12 offset-m4 m4 white-text center">
+      <h1>uMaster</h1>
+      <p class="flow-text">Running activities on your personal computer remotely</p>
+    </div>
+  </div>
+
+  <div class="row center">
+    <a href="https://twitter.com/intent/tweet?button_hashtag=umaster" class="twitter-hashtag-button" data-size="large" data-text="uMaster: the remote activity runner. Check it out at http://umaster.xyz" data-show-count="false">Tweet #umaster</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m12 center top-buffer-sm">
+        <button class="waves-effect waves-light btn-large btn-flat white-text" ng-click="signin()">Become uMaster</button>
+        <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn-large btn-flat white-text">Download Client</a>
     </div>
   </div>
 </div>
 
-<div ng-show="!loggedin && !loading" class="row">
-  <div class="card z-depth-1 hoverable">
-    <div class="card-content">
-      <div class="row">
-    <div ng-show="!loggedin && !loading" class="col s12 m4">
-      <div class="card lighten-5 hoverable no-shadow">
-        <div class="card-content">
-          <span class="card-title">
-            Latest Version
-          </span>
-          <p>
-            Version 0.0.3-alpha
-          </p>
-        </div>
-        <div class="card-action">
-          <a class="waves-effect waves-light" href="https://github.com/razvanilin/umaster-client/releases" target="_blank">See All</a>
-          <a class="waves-effect waves-light" href="https://github.com/razvanilin/uMaster/wiki/Features-checklist" target="_blank">What's next</a>
-        </div>
-      </div>
-    </div>
+<div ng-show="!loggedin && !loading" class="row secondary-bg" style="margin-bottom:0px;">
+  <div class="row">
 
-    <div class="col s12 m4">
-      <div class="card lighten-5 z-depth-1 hoverable no-shadow">
-        <div class="card-content">
+    <div class="col s12 offset-m3 m6 center white-text">
           <h4 class="card-title">Newsletter</h4>
           <p>Latest news about uMaster and get beta invites directly to your email</p>
 
@@ -82,17 +50,15 @@
           		<div class="response" id="mce-success-response" style="display:none"></div>
           	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
               <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_40d7e47179bec7fefe203400c_28a1e3a527" tabindex="-1" value=""></div>
-              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="waves-effect waves-light btn"></div>
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="waves-effect waves-light btn green"></div>
               </div>
           </form>
           </div>
           <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
           <!--End mc_embed_signup-->
-        </div>
-      </div>
     </div>
 
-    <div ng-show="!loggedin && !loading" class="col s12 m4">
+    <!-- <div ng-show="!loggedin && !loading" class="col s12 m4">
         <div class="card lighten-5 z-depth-1 hoverable no-shadow">
           <div class="card-content">
             <h4 class="card-title">Support the project</h4>
@@ -100,11 +66,6 @@
               <iframe src="https://ghbtns.com/github-btn.html?user=razvanilin&repo=uMaster&type=fork&count=true&size=small" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>
             </div>
             <div class="divider"></div>
-            <!--div class="section center">
-              <i class="fa fa-coffee fa-2x" aria-hidden="true"></i>
-              <i class="fa fa-coffee fa-2x" aria-hidden="true"></i>
-              <i class="fa fa-coffee fa-2x" aria-hidden="true"></i>
-            </div-->
             <div class="section center">
               <p>Buy me a coffee so I can transform it into code.</p>
               <br />
@@ -112,92 +73,90 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+  </div>
+</div>
+<!-- </div> -->
+
+<div ng-show="!loggedin && !loading" class="secondary-bg">
+  <div class="row">
+    <div class="section centered white-text">
+      <h4>uMaster allows you to remotely start activities on your personal computer.</h4>
     </div>
-  </div>
-  </div>
-</div>
-</div>
-
-<div ng-show="!loggedin && !loading" class="row">
-  <div class="card white-text z-depth-1 hoverable secondary-bg">
-    <div class="card-content">
-
-      <div class="section centered">
-        <h4>uMaster allows you to remotely start activities on your personal computer.</h4>
-      </div>
-      <div class="section">
-        <div class="row">
-          <div class="col grey-text s12 m4">
-            <div class="card z-depth-2 hoverable">
-              <div class="card-content">
-                <div class="center promo">
-                  <i class="material-icons">play_circle_outline</i>
-                  <p class="promo-caption">Plug and Play</p>
-                  <p> Easy setup for developers to create brand new activities usng their very own scripts. Check out the <a href="https://github.com/razvanilin/uMaster/wiki/Register-activities" target="_blank">Wiki</a> for more information.</p>
-                </div>
+    <div class="section">
+      <div class="row">
+        <div class="col grey-text s12 m4">
+          <div class="card z-depth-2 hoverable">
+            <div class="card-content">
+              <div class="center promo">
+                <i class="material-icons">play_circle_outline</i>
+                <p class="promo-caption">Plug and Play</p>
+                <p> Easy setup for developers to create brand new activities usng their very own scripts. Check out the <a href="https://github.com/razvanilin/uMaster/wiki/Register-activities" target="_blank">Wiki</a> for more information.</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col grey-text s12 m4">
-            <div class="card z-depth-2 hoverable">
-              <div class="card-content">
-                <div class="center promo">
-                  <i class="material-icons">settings_remote</i>
-                  <p class="promo-caption">No need to be there</p>
-                  <p>Need to open your favorite YouTube playlist or forgot your computer unlocked? No need to be near the computer, just grab a phone and start a new activity.</p>
-                </div>
+        <div class="col grey-text s12 m4">
+          <div class="card z-depth-2 hoverable">
+            <div class="card-content">
+              <div class="center promo">
+                <i class="material-icons">settings_remote</i>
+                <p class="promo-caption">No need to be there</p>
+                <p>Need to open your favorite YouTube playlist or forgot your computer unlocked? No need to be near the computer, just grab a phone and start a new activity.</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col grey-text s12 m4">
-            <div class="card z-depth-2 hoverable">
-              <div class="card-content">
-                <div class="center promo">
-                  <i class="material-icons">group</i>
-                  <p class="promo-caption">Community shared activities</p>
-                  <p>Users will be able to request new activities and developers can contribute to the community by sharing theirs. All scripts will await approval.</p>
-                </div>
+        <div class="col grey-text s12 m4">
+          <div class="card z-depth-2 hoverable">
+            <div class="card-content">
+              <div class="center promo">
+                <i class="material-icons">group</i>
+                <p class="promo-caption">Community shared activities</p>
+                <p>Users will be able to request new activities and developers can contribute to the community by sharing theirs. All scripts will await approval.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="section centered">
-        <h4>Early look</h4>
-      </div>
-      <div class="section">
-        <div class="row">
-          <div class="col s12 m4 offset-l1">
-            <div class="card grey lighten-5 z-depth-2 hoverable" style="border-radius:10px">
-            <img class="responsive-img" style="border-radius:10px" src="images/umaster-web.png"></img>
-            </div>
+  <div class="row secondary-bg white-text">
+    <div class="section centered">
+      <div ng-if="scrollFireEngaged" scroll-fire="hideWall()" offset="0"></div>
+      <h4>Early look</h4>
+    </div>
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m4 offset-l1">
+          <div class="card grey lighten-5 z-depth-2 hoverable" style="border-radius:10px">
+          <img class="responsive-img" style="border-radius:10px" src="images/umaster-web.png"></img>
           </div>
+        </div>
 
-          <div class="col s12 m8 l6">
-            <div class="card grey lighten-5 z-depth-2 hoverable" style="border-radius:10px">
-            <img class="responsive-img" style="border-radius:10px" src="images/umaster-client.png"></img>
-            </div>
+        <div class="col s12 m8 l6">
+          <div class="card grey lighten-5 z-depth-2 hoverable" style="border-radius:10px">
+          <img class="responsive-img" style="border-radius:10px" src="images/umaster-client.png"></img>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="section center">
-        <h4>How does it work?</h4>
-      </div>
-      <div class="section center">
-        <p class="flow-text"> Create activities using the PC client and then activate them using the web application. As simple as that.</p>
-      </div>
+    <div class="section center">
+      <h4>How does it work?</h4>
+    </div>
+    <div class="section center">
+      <p class="flow-text"> Create activities using the PC client and then activate them using the web application. As simple as that.</p>
+    </div>
 
-      <div class="section center">
-        <a class="waves-effect waves-light btn-large green" ng-click="signin()"><p class="flow-text">Give uMaster a go now</p></a>
-      </div>
-
+    <div class="section center">
+      <a class="waves-effect waves-light btn-large green" ng-click="signin()"><span class="flow-text">Give uMaster a go now</span></a>
     </div>
   </div>
+
 </div>
 
 <div ng-show="loggedin && scripts.length == 0" class="row centered">

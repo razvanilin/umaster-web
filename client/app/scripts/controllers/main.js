@@ -8,11 +8,16 @@
  * Controller of the uMasterApp
  */
 angular.module('uMasterApp')
-  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script, deviceDetector) {
+  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script, deviceDetector, $timeout) {
     $scope.viewSignup = true;
     $scope.user = {};
     $scope.pinCode = "";
     $scope.connection = {};
+    $scope.wallHidden = false;
+
+    $timeout(function() {
+      $scope.scrollFireEngaged = true;
+    },1000);
 
     // Socket messages
     umasterSocket.on('refresh-activities', function(data) {
@@ -120,5 +125,17 @@ angular.module('uMasterApp')
       } else {
         $window.open('https://github.com/razvanilin/umaster-client/releases', '_blank');
       }
+    }
+
+    $scope.hideWall = function() {
+      $scope.wallHidden = true;
+      console.log($scope.wallHidden);
+      $timeout(function() {
+        $scope.showWall();
+      });
+    }
+
+    $scope.showWall = function() {
+      console.log($scope.wallHidden);
     }
   });
