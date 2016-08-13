@@ -11,7 +11,7 @@ module.exports = function(expressApp, route) {
     if (!req.query.user) return res.status(400).send("No user found in the query.");
 
     var options = {
-      url: expressApp.settings.host + "/script/?user=" + req.query.user,
+      url: expressApp.settings.host + "/script/?user=" + req.query.user + "&auth_token=" + req.query.auth_token,
       method: "GET",
       headers: {
         'Accept': 'application/json',
