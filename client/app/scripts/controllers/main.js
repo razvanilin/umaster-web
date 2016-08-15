@@ -40,8 +40,7 @@ angular.module('uMasterApp')
       $scope.loading = true;
       // create or update the user
       User.one().customPOST(store.get('profile')).then(function(user) {
-        store.set('auth_token', user.token);
-        console.log(user.token);
+        // console.log(user.token);
         //console.log(user);
         $scope.profile = store.get('profile');
         $scope.profile.type = "web";
@@ -52,15 +51,15 @@ angular.module('uMasterApp')
         // emit the profile again
         umasterSocket.emit("register", $scope.profile);
 
+        Script.one().get({user: store.get('profile').email}).then(function(scripts) {
+          $scope.scripts = scripts;
+        }, function(response) {
+          console.log(response);
+        });
+
       }, function(response) {
         console.log(response);
         $scope.loading = false;
-      });
-
-      Script.one().get({user: store.get('profile').email}).then(function(scripts) {
-        $scope.scripts = scripts;
-      }, function(response) {
-        console.log(response);
       });
     }
 
@@ -79,7 +78,7 @@ angular.module('uMasterApp')
         store.set('token', token);
 
         // create or update the user
-        User.one().customPOST(profile.user).then(function(user) {
+        User.one().customPOST(profile).then(function(user) {
 
           $scope.profile = profile;
           // register the type of the profile

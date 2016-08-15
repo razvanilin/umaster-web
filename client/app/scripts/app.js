@@ -27,7 +27,7 @@ angular
     if (ENV == "development") {
       baseUrl = "http://localhost:3030";
     } else if (ENV == "production") {
-      baseUrl = "http://188.226.229.203:8001";
+      baseUrl = "http://api.umaster.xyz";
     }
 
     RestangularProvider.setBaseUrl(baseUrl);
@@ -38,7 +38,6 @@ angular
     }];
 
     $httpProvider.interceptors.push('jwtInterceptor');
-    $httpProvider.interceptors.push('httpRequestInterceptor');
 
     authProvider.init({
       domain: 'razvanilin.eu.auth0.com',
@@ -69,7 +68,7 @@ angular
   .factory('umasterSocket', function(socketFactory, store, ENV) {
     var socketUrl;
     if (ENV == 'production') {
-      socketUrl = "http://umaster-server.razvanilin.com";
+      socketUrl = "http://api.umaster.xyz";
     } else if (ENV == 'development') {
       socketUrl = "http://localhost:3030";
     }
@@ -86,17 +85,6 @@ angular
     }
 
     return socket;
-  })
-  .factory('httpRequestInterceptor', function(store, URI) {
-    return {
-      request: function(config) {
-        if (store.get('auth_token')) {
-          config.url = URI(config.url).addSearch({auth_token: store.get('auth_token')}).toString();
-        }
-
-        return config;
-      }
-    }
   })
   .run(function($rootScope, auth, store, jwtHelper, $location) {
     // This events gets triggered on refresh or URL change
