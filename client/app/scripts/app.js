@@ -25,7 +25,7 @@ angular
   .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider, ENV) {
     var baseUrl;
     if (ENV == "development") {
-      baseUrl = "http://localhost:8001";
+      baseUrl = "http://localhost:3030";
     } else if (ENV == "production") {
       baseUrl = "http://188.226.229.203:8001";
     }
@@ -90,8 +90,8 @@ angular
   .factory('httpRequestInterceptor', function(store, URI) {
     return {
       request: function(config) {
-        if (store.get('token')) {
-          config.url = URI(config.url).addSearch({auth_token: store.get('token')}).toString();
+        if (store.get('auth_token')) {
+          config.url = URI(config.url).addSearch({auth_token: store.get('auth_token')}).toString();
         }
 
         return config;

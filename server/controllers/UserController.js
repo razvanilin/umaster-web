@@ -9,7 +9,7 @@ module.exports = function(expressApp, route) {
     console.log("POST requested.");
     console.log(req.body.user);
     var options = {
-      url: expressApp.settings.host + "/user",
+      url: expressApp.settings.host + "/user?auth_token=" + req.query.auth_token,
       method: "POST",
       form: req.body.user,
       headers: {
@@ -50,37 +50,37 @@ module.exports = function(expressApp, route) {
   /*
    *  Route to request a create or an update for a user
    */
-  expressApp.post('/user', function(req, res) {
-    console.log("POST requested.");
-    console.log(req.body.user);
-    var options = {
-      url: expressApp.settings.host + "/user",
-      method: "POST",
-      form: req.body.user,
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      }
-    };
-
-    request(options, function(error, resp, body) {
-      if (error) {
-        console.log(error);
-        return res.status(400).send("Error while making the server request.");
-      }
-
-      var responseString;
-
-      try {
-        responseString = JSON.parse(body);
-        return res.status(200).send(responseString);
-      } catch (e) {
-        console.log(e);
-        console.log(body);
-        return res.status(400).send(body);
-      }
-    });
-  });
+  // expressApp.post('/user', function(req, res) {
+  //   console.log("POST requested.");
+  //   console.log(req.body.user);
+  //   var options = {
+  //     url: expressApp.settings.host + "/user",
+  //     method: "POST",
+  //     form: req.body.user,
+  //     headers: {
+  //       "Accept": "application/json",
+  //       "Content-Type": "application/json"
+  //     }
+  //   };
+  //
+  //   request(options, function(error, resp, body) {
+  //     if (error) {
+  //       console.log(error);
+  //       return res.status(400).send("Error while making the server request.");
+  //     }
+  //
+  //     var responseString;
+  //
+  //     try {
+  //       responseString = JSON.parse(body);
+  //       return res.status(200).send(responseString);
+  //     } catch (e) {
+  //       console.log(e);
+  //       console.log(body);
+  //       return res.status(400).send(body);
+  //     }
+  //   });
+  // });
   // ------------------------------------------------------------------------
 
 

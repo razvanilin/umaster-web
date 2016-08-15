@@ -39,8 +39,9 @@ angular.module('uMasterApp')
     if (store.get('profile')) {
       $scope.loading = true;
       // create or update the user
-      User.one().customPOST({user: store.get('profile')}).then(function(user) {
-
+      User.one().customPOST(store.get('profile')).then(function(user) {
+        store.set('auth_token', user.token);
+        console.log(user.token);
         //console.log(user);
         $scope.profile = store.get('profile');
         $scope.profile.type = "web";
@@ -73,11 +74,13 @@ angular.module('uMasterApp')
       $scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
-        // create or update the user
-        User.one().customPOST({user: profile}).then(function(user) {
 
-          store.set('profile', profile);
-          store.set('token', token);
+        store.set('profile', profile);
+        store.set('token', token);
+
+        // create or update the user
+        User.one().customPOST(profile.user).then(function(user) {
+
           $scope.profile = profile;
           // register the type of the profile
           $scope.profile.type = "web";
