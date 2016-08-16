@@ -18,28 +18,18 @@
     <meta name="twitter:title" content="uMaster - Remote activity runner">
     <meta name="twitter:description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
     <meta name="twitter:image" content="https://github.com/razvanilin/umaster-web/raw/master/client/app/images/logo-color.png">
-    <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="https://apis.google.com/js/platform.js?onload=start" parsetags="explicit" async defer></script>
-  <script>
-    function start() {
-      gapi.load('auth2', function() {
-        auth2 = gapi.auth2.init({
-          client_id: '1034186237800-7her04djh7slgu8mdq2n4du5f464rtdg.apps.googleusercontent.com',
-          // Scopes to request in addition to 'profile' and 'email'
-          //scope: 'additional_scope'
-        });
 
-        gapi.signin2.render('signinButton', {
-                'class': 'g-signin',
-                redirect_uri: 'postmessage',
-                onsuccess: signInCallback,
-                cookiepolicy: 'single_host_origin',
-                accesstype: 'offline',
-                theme: 'dark'
-            });
-      });
-    }
-  </script-->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-48182378-3');
+       ga('send', 'pageview');
+    </script>
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -59,17 +49,6 @@
     <div ng-view=""></div>
     </div>
 
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-48182378-3');
-       ga('send', 'pageview');
-    </script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <!--script>window.$ = window.jQuery = require('..\\client\\bower_components\\jquery\\dist\\jquery.js');</script-->
     <!-- build:js(.) scripts/vendor.js -->
@@ -114,7 +93,6 @@
         <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
         <!-- Place this tag in your head or just before your close body tag. -->
-      <script async defer src="https://buttons.github.io/buttons.js"></script>
       <script src="https://client.crisp.im/l/edabc96e-8185-4e16-830d-41f5c08ce247.js" defer></script>
 </body>
 </html>
