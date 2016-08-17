@@ -25,9 +25,11 @@ angular
   .config(function ($routeProvider, $httpProvider, RestangularProvider, authProvider, jwtInterceptorProvider, ENV) {
     var baseUrl;
     if (ENV == "development") {
-      baseUrl = "http://localhost:3030";
+      baseUrl = "http://localhost:3031";
     } else if (ENV == "production") {
-      baseUrl = "http://api.umaster.xyz";
+      baseUrl = "https://api.umaster.xyz";
+    } else if (ENV == "production-test") {
+      baseUrl = "https://apidev.umaster.xyz";
     }
 
     RestangularProvider.setBaseUrl(baseUrl);
@@ -68,7 +70,9 @@ angular
   .factory('umasterSocket', function(socketFactory, store, ENV) {
     var socketUrl;
     if (ENV == 'production') {
-      socketUrl = "http://api.umaster.xyz";
+      socketUrl = "https://api.umaster.xyz";
+    } else if (ENV == 'production-test') {
+      socketUrl = "https://apidev.umaster.xyz";
     } else if (ENV == 'development') {
       socketUrl = "http://localhost:3030";
     }
