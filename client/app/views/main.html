@@ -1,6 +1,5 @@
 <ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
 <!-- <div class="marketing-bg intro-wrapper" ng-class="{'hide-wall': wallHidden}"></div> -->
-
 <div ng-show="!loggedin && !loading" class="marketing-bg top-buffer-sm">
   <div class="row">
     <div class="col s12 m2 center">
@@ -32,6 +31,9 @@
         <a class="waves-effect waves-light btn-large white-text top-buffer-sm" ng-click="signin()">Become uMaster</a>
         <a href="https://umaster-nuts.herokuapp.com/" class="waves-effect waves-light btn-large white-text top-buffer-sm">Download Client</a>
     </div>
+  </div>
+  <div class="flag-bg hide-on-small-only">
+    <img src="images/flag_bg.png">
   </div>
 </div>
 
