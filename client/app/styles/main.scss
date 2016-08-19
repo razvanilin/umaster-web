@@ -49,26 +49,26 @@ html {
 
 @media screen and (min-width: 0px) {
   body {
+    background-color: #4A8E4E;
     background-image:url('/images/blurr-min.jpg');
     //background-repeat:no-repeat;
     //background-size:contain;
     //background-position: center;
     padding: 0;
     //padding-top: 70px;
-    // background-color: #4A8E4E;
     color: #707070;
   }
 }
 
 @media screen and (min-width: 1000px) {
   body {
+    background-color: #4A8E4E;
     background-image:url('/images/blurr-min.jpg');
     //background-repeat:no-repeat;
     background-size:contain;
     //background-position: center;
     padding: 0;
     //padding-top: 70px;
-    // background-color: #4A8E4E;
     color: #707070;
   }
 
