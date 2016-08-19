@@ -87,11 +87,17 @@ html {
   animation-duration: 2s;
 }
 
+
 @media screen and (min-width: 0px) {
   .flag-bg {
     position:absolute;
     right:50px;
     bottom:50px;
+  }
+
+  .marketing-body {
+    padding-left:10px;
+    padding-right: 10px;
   }
 
   .flag-bg img {
@@ -109,6 +115,16 @@ html {
   .flag-bg img {
     height:200px
   }
+
+  .marketing-body {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .marketing-text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -121,6 +137,16 @@ html {
   .flag-bg img {
     height:300px
   }
+
+  .marketing-body {
+    padding-left:50px;
+    padding-right: 50px;
+  }
+
+  .marketing-text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media screen and (min-width: 1600px) {
@@ -132,6 +158,16 @@ html {
   .flag-bg img {
     height:400px
   }
+
+  .marketing-body {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .marketing-text {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 @media screen and (min-width: 1900px) {
@@ -142,6 +178,16 @@ html {
   }
   .flag-bg img {
     height:450px
+  }
+
+  .marketing-body {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .marketing-text {
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 
