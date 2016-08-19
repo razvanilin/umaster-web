@@ -1,4 +1,4 @@
-<ng-include ng-show="loggedin" src="'views/navbar.html'"></ng-include>
+<ng-include ng-if="loggedin" src="'views/navbar.html'"></ng-include>
 <!-- <div class="marketing-bg intro-wrapper" ng-class="{'hide-wall': wallHidden}"></div> -->
 <div ng-show="!loggedin && !loading" class="marketing-bg top-buffer-sm">
   <div class="row">
@@ -242,16 +242,14 @@
   </div>
 </div>
 
-<div ng-show="loggedin" class="fixed-action-btn vertical" style="bottom: 60px; right: 24px;">
-  <a class="btn-floating btn-large">
-    <img ng-src="{{profile.picture}}" class="circle" style="max-height:60px;">
-  </a>
-  <ul>
-    <li><a tooltipped class="btn-floating red" data-position="left" data-delay="50" data-tooltip="Sign out" ng-click="logout()">
-      <i class="material-icons">power_settings_new</i></a></li>
-    <li><a tooltipped class="btn-floating blue" data-position="left" data-delay="50" data-tooltip="Account settings">
-      <i class="material-icons">settings</i></a></li>
-  </ul>
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <h4 class="modal-title">Terms & Conditions</h4>
+    <ng-include src="'views/terms.html'"></ng-include>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect btn-flat">Cancel</a>
+  </div>
 </div>
 
 

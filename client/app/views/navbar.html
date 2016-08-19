@@ -1,8 +1,13 @@
 <div class="navbar-fixed">
   <ul id="dropdown1" class="dropdown-content">
-    <li><a href="javascript:void(0);">Account</a></li>
+    <li><a ng-click="navigate('dashboard')">Dashboard</a></li>
+    <!-- <li><a href='#updateModal' modal ng-click="checkForUpdates()">Settings</a></li> -->
+    <li><a class="typeform-share button" href="https://razvanilin.typeform.com/to/HtfKKN" data-mode="1" target="_blank">Suggestions?</a>
+<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href='';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()</script>
+  </li>
+    <li><a href="#termsModal" modal>T & C</a></li>
     <li class="divider"></li>
-    <li><a ng-href="" ng-click="logout()">Logout</a></li>
+    <li><a ng-href="" ng-click="logOut()">Logout</a></li>
   </ul>
   <nav>
     <div class="nav-wrapper">
@@ -16,11 +21,43 @@
           </a>
         </li>
       </ul-->
-      <ul class="right">
+      <ul class="left">
+        <li>
+          <a href="#" class="button-collapse hide-on-med-and-up" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="300" data-closeonclick="false">
+            <i class="large material-icons">menu</i>
+          </a>
+          <a href="javascript:void(0)" class="hide-on-small-only center"><div class="valign-wrapper"><img ng-src="{{profile.picture}}" class="circle" style="max-height:30px;margin-right:5px"> <span class="valign"> {{profile.nickname}}</span></div></a>
+        </li>
+      </ul>
+      <ul class="right hide-on-med-and-up">
         <li>
           <a tooltipped ng-show="!connection" data-position="bottom" data-delay="50"  data-tooltip="Not connected to the PC client"><i class="material-icons">portable_wifi_off</i></a>
           <a tooltipped ng-show="connection" data-position="bottom" data-delay="50"  data-tooltip="Connected to the PC client"><i class="material-icons">settings_input_antenna</i></a>
         </li>
+      </ul>
+      <ul class="right hide-on-small-only">
+        <li tooltipped data-position="bottom" data-delay="50"  data-tooltip="Help improve uMaster"><a class="typeform-share button" href="https://razvanilin.typeform.com/to/HtfKKN" data-mode="1" target="_blank">Suggestions?</a>
+    <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href='';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()</script>
+      </li>
+      <li><a ng-href="" ng-click="logOut()">Logout</a></li>
+        <li>
+          <a tooltipped ng-show="!connection" data-position="bottom" data-delay="50"  data-tooltip="Not connected to the PC client"><i class="material-icons">portable_wifi_off</i></a>
+          <a tooltipped ng-show="connection" data-position="bottom" data-delay="50"  data-tooltip="Connected to the PC client"><i class="material-icons">settings_input_antenna</i></a>
+        </li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav fixed hide-on-large-only">
+              <!--Maybe a logo?-->
+              <li class="logo center"><img src="images/logo-color.png" height="70px"></li>
+              <li class="center"><a ng-href="" class="white-text"><div class="valign-wrapper"><img ng-src="{{profile.picture}}" class="circle" style="max-height:30px;margin-right:5px"> {{profile.nickname}}</div></a>
+</li>
+              <li class="divider"></li>
+              <li tooltipped data-position="bottom" data-delay="50"  data-tooltip="Help improve uMaster"><a class="typeform-share button white-text" href="https://razvanilin.typeform.com/to/HtfKKN" data-mode="1" target="_blank">Suggestions?</a>
+          <script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href='';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()</script>
+            </li>
+              <li class="bold"><a href="#termsModal" class="waves-effect white-text" modal>Terms & Conditions</a></li>
+              <li class="divider"></li>
+              <li class="bold"><a ng-click="logOut()" class="waves-effect white-text">Logout</a></li>
       </ul>
     </div>
   </nav>

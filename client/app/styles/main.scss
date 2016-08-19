@@ -56,7 +56,7 @@ html {
     padding: 0;
     //padding-top: 70px;
     // background-color: #4A8E4E;
-    // color: #707070;
+    color: #707070;
   }
 }
 
@@ -69,7 +69,7 @@ html {
     padding: 0;
     //padding-top: 70px;
     // background-color: #4A8E4E;
-    // color: #707070;
+    color: #707070;
   }
 
 }
@@ -149,6 +149,11 @@ html {
   transform: translate(0px, 100px);
   transition: all 1s ease;
 }
+
+.side-nav {
+  background-color: $secondary-color;
+}
+
 
 .intro-wrapper {
   pointer-events: none;

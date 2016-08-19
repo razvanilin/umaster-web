@@ -8,7 +8,7 @@
  * Controller of the uMasterApp
  */
 angular.module('uMasterApp')
-  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script, deviceDetector, $timeout) {
+  .controller('MainCtrl', function ($scope, $window, User, auth, store, $location, umasterSocket, Script, $timeout) {
     $scope.viewSignup = true;
     $scope.user = {};
     $scope.pinCode = "";
@@ -38,6 +38,8 @@ angular.module('uMasterApp')
 
     if (store.get('profile')) {
       $scope.loading = true;
+      document.getElementsByTagName("body")[0].style.backgroundImage = "none";
+      document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
       // create or update the user
       User.one().customPOST(store.get('profile')).then(function(user) {
         // console.log(user.token);
@@ -73,7 +75,8 @@ angular.module('uMasterApp')
       $scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
-
+        document.getElementsByTagName("body")[0].style.backgroundImage = "none";
+        document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
         store.set('profile', profile);
         store.set('token', token);
 
@@ -108,7 +111,7 @@ angular.module('uMasterApp')
       });
     };
 
-    $scope.logout = function() {
+    $scope.logOut = function() {
       auth.signout();
       store.remove('profile');
       store.remove('token');
@@ -119,15 +122,10 @@ angular.module('uMasterApp')
 
 
       $scope.pinCode = "";
-    };
 
-    $scope.downloadClient = function() {
-      if (deviceDetector.os == "mac") {
-        $window.open("https://github.com/razvanilin/umaster-client/releases/download/untagged-fea942fff905bee46bd5/uMaster-darwin-x64-v0.0.3-alpha.dmg");
-      } else {
-        $window.open('https://github.com/razvanilin/umaster-client/releases', '_blank');
-      }
-    }
+      document.getElementsByTagName("body")[0].style.backgroundImage = "url('/images/blurr-min.jpg')";
+      document.getElementsByTagName("body")[0].style.backgroundColor = "none";
+    };
 
     $scope.hideWall = function() {
       $scope.wallHidden = true;

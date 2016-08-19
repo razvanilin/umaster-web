@@ -2,34 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>uMaster | Remote activity runner</title>
-    <meta name="description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
+    <title></title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="uMaster">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://umaster.xyz">
-    <meta property="og:image" content="https://github.com/razvanilin/umaster-web/raw/master/client/app/images/logo-color.png">
-    <meta property="og:description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
-    <meta property="fb:app_id" content="1545477552419601">
+    <!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=start" parsetags="explicit" async defer></script>
+  <script>
+    function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '1034186237800-7her04djh7slgu8mdq2n4du5f464rtdg.apps.googleusercontent.com',
+          // Scopes to request in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
 
-    <!-- Twitter meta -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@razvanilin">
-    <meta name="twitter:title" content="uMaster - Remote activity runner">
-    <meta name="twitter:description" content="uMaster is a remote activity runner. Activate activities on your PC remotely from your phone or any other terminal.">
-    <meta name="twitter:image" content="https://github.com/razvanilin/umaster-web/raw/master/client/app/images/logo-color.png">
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-48182378-3');
-       ga('send', 'pageview');
-    </script>
-
+        gapi.signin2.render('signinButton', {
+                'class': 'g-signin',
+                redirect_uri: 'postmessage',
+                onsuccess: signInCallback,
+                cookiepolicy: 'single_host_origin',
+                accesstype: 'offline',
+                theme: 'dark'
+            });
+      });
+    }
+  </script-->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -39,6 +36,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -49,6 +47,17 @@
     <div ng-view=""></div>
     </div>
 
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <!--script>window.$ = window.jQuery = require('..\\client\\bower_components\\jquery\\dist\\jquery.js');</script-->
     <!-- build:js(.) scripts/vendor.js -->
@@ -67,10 +76,6 @@
     <script src="bower_components/auth0-angular/build/auth0-angular.js"></script>
     <script src="bower_components/a0-angular-storage/dist/angular-storage.js"></script>
     <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
-    <script src="bower_components/re-tree/re-tree.js"></script>
-    <script src="bower_components/ng-device-detector/ng-device-detector.js"></script>
-    <script src="bower_components/uri.js/src/URI.js"></script>
-    <script src="bower_components/angular-uri/angular-uri.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!--script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
@@ -90,9 +95,6 @@
         <script src="scripts/config.js"></script>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
         <!-- endbuild -->
-        <!-- Place this tag in your head or just before your close body tag. -->
-      <script src="https://client.crisp.im/l/edabc96e-8185-4e16-830d-41f5c08ce247.js" defer></script>
 </body>
 </html>

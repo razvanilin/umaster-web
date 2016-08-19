@@ -36,10 +36,6 @@ module.exports = function(config) {
       'bower_components/auth0-angular/build/auth0-angular.js',
       'bower_components/a0-angular-storage/dist/angular-storage.js',
       'bower_components/angular-jwt/dist/angular-jwt.js',
-      'bower_components/re-tree/re-tree.js',
-      'bower_components/ng-device-detector/ng-device-detector.js',
-      'bower_components/uri.js/src/URI.js',
-      'bower_components/angular-uri/angular-uri.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
