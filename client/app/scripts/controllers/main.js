@@ -38,10 +38,10 @@ angular.module('uMasterApp')
 
     if (store.get('profile')) {
       $scope.loading = true;
-      document.getElementsByTagName("body")[0].style.backgroundImage = "none";
-      document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
       // create or update the user
       User.one().customPOST(store.get('profile')).then(function(user) {
+        document.getElementsByTagName("body")[0].style.backgroundImage = "none";
+        document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
         // console.log(user.token);
         //console.log(user);
         $scope.profile = store.get('profile');
@@ -75,14 +75,14 @@ angular.module('uMasterApp')
       $scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
-        document.getElementsByTagName("body")[0].style.backgroundImage = "none";
-        document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
         store.set('profile', profile);
         store.set('token', token);
 
         // create or update the user
         User.one().customPOST(profile).then(function(user) {
-
+          document.getElementsByTagName("body")[0].style.backgroundImage = "none";
+          document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
+          
           $scope.profile = profile;
           // register the type of the profile
           $scope.profile.type = "web";
