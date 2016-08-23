@@ -152,7 +152,7 @@ angular.module('uMasterApp')
         // plan: "enterprise"
       });
 
-      Appcues.on("flow_shown", function(eventData) {
+      Appcues.on("flow_finished", function(eventData) {
         // when the welcome flow finished
         console.log("yo");
         if (eventData.flowId == "-KPMhc9-2M8J6PuhTIae") {
