@@ -39,7 +39,7 @@ angular.module('uMasterApp')
     if (store.get('profile')) {
       $scope.loading = true;
       // create or update the user
-      User.one().customPOST(store.get('profile')).then(function(user) {
+      User.one().customPOST(store.get('profile')).then(function(data) {
         document.getElementsByTagName("body")[0].style.backgroundImage = "none";
         document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
         // console.log(user.token);
@@ -55,6 +55,7 @@ angular.module('uMasterApp')
 
         Script.one().get({user: store.get('profile').email}).then(function(scripts) {
           $scope.scripts = scripts;
+          showAppCues(data.user);
         }, function(response) {
           console.log(response);
         });
@@ -72,17 +73,17 @@ angular.module('uMasterApp')
     };
 
     $scope.signin = function() {
-      $scope.loading = true;
+      //$scope.loading = true;
       auth.signin({}, function (profile, token) {
         // Success callback
         store.set('profile', profile);
         store.set('token', token);
 
         // create or update the user
-        User.one().customPOST(profile).then(function(user) {
+        User.one().customPOST(profile).then(function(data) {
           document.getElementsByTagName("body")[0].style.backgroundImage = "none";
           document.getElementsByTagName("body")[0].style.backgroundColor = "#4A8E4E";
-          
+
           $scope.profile = profile;
           // register the type of the profile
           $scope.profile.type = "web";
@@ -137,5 +138,26 @@ angular.module('uMasterApp')
 
     $scope.showWall = function() {
       console.log($scope.wallHidden);
+    }
+
+    // APPCUES stuff
+    function showAppCues(user) {
+      Appcues.identify(user._id, { // Unique identifier for current user
+        name: user.profile.name, // Current user's name
+        email: user.email, // Current user's email
+        created_at: user.createdAt, // Unix timestamp of user signup date
+
+        // Additional user properties.
+        // is_trial: false,
+        // plan: "enterprise"
+      });
+
+      Appcues.on("flow_shown", function(eventData) {
+        // when the welcome flow finished
+        console.log("yo");
+        if (eventData.flowId == "-KPMhc9-2M8J6PuhTIae") {
+          Appcues.show("-KPt2eioAAONS0Gad79g");
+        }
+      });
     }
   });
