@@ -151,5 +151,11 @@ angular.module('uMasterApp')
         // is_trial: false,
         // plan: "enterprise"
       });
+
+      Appcues.on("flow_completed", function(eventData) {
+        if (eventData.flowId == "-KPMhc9-2M8J6PuhTIae") {
+          Appcues.show("-KPt2eioAAONS0Gad79g");
+        }
+      })
     }
   });
